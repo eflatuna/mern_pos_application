@@ -1,4 +1,4 @@
-import { Badge, Input } from "antd";
+import { Input } from "antd";
 import {
 	BarChartOutlined,
 	CopyOutlined,
@@ -8,6 +8,8 @@ import {
 	ShoppingCartOutlined,
 	UserOutlined,
 } from "@ant-design/icons";
+import MenuItem from "./MenuItem.jsx";
+
 const Header = () => {
 	return (
 		<div className="border-b mb-6">
@@ -27,76 +29,58 @@ const Header = () => {
 						size="large"
 						placeholder="Search products..."
 						prefix={<SearchOutlined />}
-						className="rounded-full max-w-[800px]"
+						className="rounded-full w-full min-w-[150px] md:max-w-[800px]"
 					/>
 				</div>
-				<div className="menu-links flex justify-between items-center gap-7 md:static fixed bottom-0 md:w-auto w-screen md:bg-transparent bg-white left-0 md:border-t-0 border-t md:px-0 px-4 py-1">
-					<a
+				<div className="menu-links flex justify-between items-center gap-7 fixed bottom-0 left-0 w-full bg-white z-50 md:static md:w-auto md:bg-transparent md:border-t-0 border-t md:px-0 px-4 py-1">
+					<MenuItem
 						href="/"
-						className="menu-link flex flex-col hover:text-[#40a9ff] transition-all"
-					>
-						<HomeOutlined className="md:text-2xl text-xl " />
-						<span className="md:text-xs text-[10px]">Home</span>
-					</a>
-					<Badge
+						icon={<HomeOutlined className="md:text-2xl text-xl" />}
+						label="Home"
+					/>
+					<MenuItem
+						href="/"
+						icon={
+							<ShoppingCartOutlined className="md:text-2xl text-xl" />
+						}
+						label="Cart"
 						count={5}
-						offset={[-25, -5]}
-						className="md:flex hidden"
-					>
-						<a
-							href="/"
-							className="menu-link flex flex-col hover:text-[#40a9ff] transition-all"
-						>
-							<ShoppingCartOutlined className="md:text-2xl text-xl " />
-							<span className="md:text-xs text-[10px]">
-								Shopping Cart
-							</span>
-						</a>
-					</Badge>
-					<a
+						showOnMobile={false}
+						showOnDesktop={true}
+					/>
+					<MenuItem
 						href="/"
-						className="menu-link flex flex-col hover:text-[#40a9ff] transition-all"
-					>
-						<CopyOutlined className="md:text-2xl text-xl " />
-						<span className="md:text-xs text-[10px]">Invoices</span>
-					</a>
-					<a
+						icon={<CopyOutlined className="md:text-2xl text-xl" />}
+						label="Invoices"
+					/>
+					<MenuItem
 						href="/"
-						className="menu-link flex flex-col hover:text-[#40a9ff] transition-all"
-					>
-						<UserOutlined className="md:text-2xl text-xl " />
-						<span className="md:text-xs text-[10px]">
-							Customers
-						</span>
-					</a>
-					<a
+						icon={<UserOutlined className="md:text-2xl text-xl" />}
+						label="Customers"
+					/>
+					<MenuItem
 						href="/"
-						className="menu-link flex flex-col hover:text-[#40a9ff] transition-all"
-					>
-						<BarChartOutlined className="md:text-2xl text-xl " />
-						<span className="md:text-xs text-[10px]">
-							Analytics
-						</span>
-					</a>
-					<a
+						icon={
+							<BarChartOutlined className="md:text-2xl text-xl" />
+						}
+						label="Analytics"
+					/>
+					<MenuItem
 						href="/"
-						className="menu-link flex flex-col hover:text-[#40a9ff] transition-all"
-					>
-						<LogoutOutlined className="md:text-2xl text-xl " />
-						<span className="md:text-xs text-[10px]">Logout</span>
-					</a>
+						icon={
+							<LogoutOutlined className="md:text-2xl text-xl" />
+						}
+						label="Logout"
+					/>
 				</div>
-				<Badge count={5} offset={[-25, -5]} className="md:hidden flex">
-					<a
-						href="/"
-						className="menu-link flex flex-col hover:text-[#40a9ff] transition-all"
-					>
-						<ShoppingCartOutlined className="text-2xl  " />
-						<span className="md:text-xs text-[10px]">
-							Shopping Cart
-						</span>
-					</a>
-				</Badge>
+				<MenuItem
+					href="/"
+					icon={<ShoppingCartOutlined className=" text-xl" />}
+					label="Cart"
+					count={5}
+					showOnMobile={true}
+					showOnDesktop={false}
+				/>
 			</header>
 		</div>
 	);
