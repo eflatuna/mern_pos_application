@@ -14,12 +14,12 @@ const cartData = [
 ];
 const CartTotal = () => {
 	return (
-		<div className="cart flex flex-col h-[calc(100vh-112px)]">
+		<div className="cart h-full max-h-[calc(100vh-112px)] flex flex-col">
 			<h2 className="bg-blue-600 text-center py-4 text-white font-bold tracking-wide">
 				Items in Cart
 			</h2>
 
-			<ul className="cart-items flex-1 overflow-hidden px-2 flex flex-col gap-y-3 py-2 overflow-y-auto">
+			<ul className="cart-items px-2 flex flex-col gap-y-3 py-2 overflow-y-auto">
 				{cartData.map((item) => (
 					<li
 						key={item.id}
@@ -45,7 +45,7 @@ const CartTotal = () => {
 								className="flex items-center justify-center !rounded-full"
 								icon={<PlusCircleOutlined />}
 							/>
-							<span>{item.quantity}</span>
+							<span className="font-bold">{item.quantity}</span>
 							<Button
 								type="primary"
 								danger

@@ -10,18 +10,16 @@ const Categories = () => {
 	];
 
 	return (
-		<div>
-			<ul className="flex gap-4 flex-col text-center text-lg">
-				{categoryList.map((category, index) => (
-					<li
-						key={index}
-						className="bg-green-700 px-6 py-10 text-white cursor-pointer hover:bg-pink-700 transition-all min-w-[145px]"
-					>
-						<span>{category}</span>
-					</li>
-				))}
-			</ul>
-		</div>
+		<ul className="flex gap-4 md:flex-col text-center text-lg">
+			{categoryList.map((category, index) => (
+				<li
+					key={index}
+					className="bg-green-700 px-6 py-10 text-white cursor-pointer hover:bg-pink-700 transition-all min-w-[145px]"
+				>
+					<span>{category}</span>
+				</li>
+			))}
+		</ul>
 	);
 };
 
