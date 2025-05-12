@@ -9,8 +9,8 @@ function App() {
 		<>
 			<Header />
 			{/* <Home /> */}
-			<div className="home px-6 flex md:flex-row flex-col justify-between gap-10 md:pb-0 pb-24">
-				<div className="categories overflow-auto max-h-[calc(100vh-112px] md:pb-10">
+			<div className="home px-6 flex md:flex-row flex-col justify-between gap-10 md:pb-0 pb-10">
+				<div className="categories overflow-y-auto max-h-[calc(100vh-112px)] md:pb-10">
 					<Categories />
 				</div>
 				<div className="products flex-[8] max-h-[calc(100vh-112px)] overflow-auto pb-10">

@@ -14,8 +14,8 @@ const cartData = [
 ];
 const CartTotal = () => {
 	return (
-		<div className="cart h-full max-h-[calc(100vh-112px)] flex flex-col">
-			<h2 className="bg-blue-600 text-center py-4 text-white font-bold tracking-wide">
+		<div className="cart h-full max-h-[calc(100vh-112px)] flex flex-col p-5 ">
+			<h2 className="bg-light-blue text-center py-4 text-white font-bold tracking-wide">
 				Items in Cart
 			</h2>
 
@@ -42,7 +42,7 @@ const CartTotal = () => {
 							<Button
 								type="primary"
 								size="small"
-								className="flex items-center justify-center !rounded-full"
+								className="flex items-center justify-center !rounded-full !bg-light-blue"
 								icon={<PlusCircleOutlined />}
 							/>
 							<span className="font-bold">{item.quantity}</span>
@@ -50,7 +50,7 @@ const CartTotal = () => {
 								type="primary"
 								danger
 								size="small"
-								className="flex items-center justify-center !rounded-full"
+								className="flex items-center justify-center !rounded-full !bg-danger-dark"
 								icon={<MinusCircleOutlined />}
 							/>
 						</div>
@@ -70,18 +70,21 @@ const CartTotal = () => {
 				</div>
 				<div className=" mt-4">
 					<div className="flex justify-between p-2">
-						<b className="text-xl text-green-500">Total</b>
+						<b className="text-xl text-dark-green">Total</b>
 						<span className="text-xl">120€</span>
 					</div>
 					<div className="py-4 px-2">
-						<Button type="primary" size="large" className="w-full">
+						<Button
+							type="primary"
+							size="large"
+							className="w-full !bg-light-blue"
+						>
 							Place Order
 						</Button>
 						<Button
 							type="primary"
-							danger
 							size="large"
-							className="w-full mt-2 flex items-center justify-center"
+							className="w-full mt-2 flex items-center justify-center !bg-danger-dark"
 							icon={<ClearOutlined />}
 						>
 							Clear
