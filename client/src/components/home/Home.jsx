@@ -6,7 +6,7 @@ const Home = () => {
 	return (
 		<>
 			<div className="home px-6 flex justify-between gap-10">
-				<div className="categories flex-1 overflow-auto max-h-[calc(100vh-112px)] pb-10">
+				<div className="categories overflow-auto max-h-[calc(100vh-112px)] pb-10">
 					<div>
 						<Categories />
 					</div>
@@ -16,7 +16,7 @@ const Home = () => {
 						<Products />
 					</div>
 				</div>
-				<div className="cart ">
+				<div className="cart-wrapper min-w-[300px] md:-mr-[24px] md:-mt-[24px] border">
 					<div>
 						<CartTotal />
 					</div>
