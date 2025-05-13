@@ -1,7 +1,8 @@
 import { Badge } from "antd";
+import { Link } from "react-router-dom";
 
 const MenuItem = ({
-	href,
+	to,
 	icon,
 	label,
 	count,
@@ -13,8 +14,8 @@ const MenuItem = ({
 		${showOnDesktop ? "md:flex" : "md:hidden"}
 	`;
 	return (
-		<a
-			href={href}
+		<Link
+			to={to}
 			className={`menu-link flex flex-col hover:text-[#40a9ff] transition-all ${responsiveClass}`}
 		>
 			{count ? (
@@ -25,7 +26,7 @@ const MenuItem = ({
 				icon
 			)}
 			<span className="md:text-xs text-[10px]">{label}</span>
-		</a>
+		</Link>
 	);
 };
 

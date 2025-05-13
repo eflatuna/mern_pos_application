@@ -1,46 +1,55 @@
 import { Button, Form, Input, Modal, Select, Card } from "antd";
+import React from "react";
 
 const CreateInvoice = ({ setIsModalOpen, isModalOpen }) => {
 	const onFinish = (values) => {
 		console.log("Success:", values);
 	};
 
+	const closeModal = () => setIsModalOpen(false);
+
+	const formFields = [
+		{
+			label: "Customer name",
+			name: "customerName",
+			placeholder: "Enter customer's full name",
+			message: "Enter customer's full name",
+			component: <Input />,
+		},
+		{
+			label: "Phone number",
+			name: "phoneNumber",
+			placeholder: "Enter customer's phone number",
+			message: "Enter customer's phone number",
+			component: <Input />,
+		},
+	];
 	return (
 		<Modal
 			title="Create an invoice"
-			closable={{ "aria-label": "Custom Close Button" }}
 			open={isModalOpen}
 			footer={false}
-			onCancel={() => setIsModalOpen(false)}
+			onCancel={closeModal}
 		>
 			<Form layout="vertical" name="userForm" onFinish={onFinish}>
-				<Form.Item
-					label="Customer name"
-					name="customerName"
-					rules={[
-						{
-							required: true,
-							message: "Enter customer's full name",
-						},
-					]}
-				>
-					<Input placeholder="Enter customer's full name" />
-				</Form.Item>
-				<Form.Item
-					label="Phone number"
-					name="phoneNumber"
-					rules={[
-						{
-							required: true,
-							message: "Enter customer's phone number",
-						},
-					]}
-				>
-					<Input
-						placeholder="Enter customer's phone number"
-						maxLength={11}
-					/>
-				</Form.Item>
+				{formFields.map(
+					(label, name, placeholder, message, component) => (
+						<Form.Item
+							key={name}
+							label={label}
+							name={name}
+							rules={[
+								{
+									required: true,
+									message,
+								},
+							]}
+						>
+							{component &&
+								React.cloneElement(component, { placeholder })}
+						</Form.Item>
+					)
+				)}
 				<Form.Item
 					label="Payment method"
 					name="paymentMethod"
@@ -75,7 +84,6 @@ const CreateInvoice = ({ setIsModalOpen, isModalOpen }) => {
 							className="mt-4 !bg-light-blue"
 							type="primary"
 							htmlType="submit"
-							onClick={() => setIsModalOpen(true)}
 						>
 							Create an order
 						</Button>

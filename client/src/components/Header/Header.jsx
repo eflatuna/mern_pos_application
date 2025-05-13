@@ -9,20 +9,21 @@ import {
 	UserOutlined,
 } from "@ant-design/icons";
 import MenuItem from "./MenuItem.jsx";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 	return (
 		<div className="border-b mb-6">
 			<header className="py-4 px-6 flex justify-between items-center gap-10">
 				<div className="logo">
-					<a href="/">
+					<Link to="/">
 						<h2
 							className="text-2xl font-bold
             md:text-4xl"
 						>
 							LOGO
 						</h2>
-					</a>
+					</Link>
 				</div>
 				<div className="header-search flex-1 flex justify-center">
 					<Input
@@ -34,12 +35,12 @@ const Header = () => {
 				</div>
 				<div className="menu-links flex justify-between items-center gap-7 fixed z-50 bottom-0 left-0 w-full bg-white md:static md:w-auto md:bg-transparent md:border-t-0 border-t md:px-0 px-4 py-1">
 					<MenuItem
-						href="/"
+						to="/"
 						icon={<HomeOutlined className="md:text-2xl text-xl" />}
 						label="Home"
 					/>
 					<MenuItem
-						href="/"
+						to="/cart"
 						icon={
 							<ShoppingCartOutlined className="md:text-2xl text-xl" />
 						}
@@ -49,24 +50,24 @@ const Header = () => {
 						showOnDesktop={true}
 					/>
 					<MenuItem
-						href="/"
+						to="/invoices"
 						icon={<CopyOutlined className="md:text-2xl text-xl" />}
 						label="Invoices"
 					/>
 					<MenuItem
-						href="/"
+						to="/customers"
 						icon={<UserOutlined className="md:text-2xl text-xl" />}
 						label="Customers"
 					/>
 					<MenuItem
-						href="/"
+						to="/analytics"
 						icon={
 							<BarChartOutlined className="md:text-2xl text-xl" />
 						}
 						label="Analytics"
 					/>
 					<MenuItem
-						href="/"
+						to="/logout"
 						icon={
 							<LogoutOutlined className="md:text-2xl text-xl" />
 						}
@@ -74,7 +75,7 @@ const Header = () => {
 					/>
 				</div>
 				<MenuItem
-					href="/"
+					to="/cart"
 					icon={<ShoppingCartOutlined className=" text-xl" />}
 					label="Cart"
 					count={5}
