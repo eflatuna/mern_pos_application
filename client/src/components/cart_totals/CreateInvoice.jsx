@@ -32,24 +32,24 @@ const CreateInvoice = ({ setIsModalOpen, isModalOpen }) => {
 			onCancel={closeModal}
 		>
 			<Form layout="vertical" name="userForm" onFinish={onFinish}>
-				{formFields.map(
-					(label, name, placeholder, message, component) => (
-						<Form.Item
-							key={name}
-							label={label}
-							name={name}
-							rules={[
-								{
-									required: true,
-									message,
-								},
-							]}
-						>
-							{component &&
-								React.cloneElement(component, { placeholder })}
-						</Form.Item>
-					)
-				)}
+				{formFields.map((field) => (
+					<Form.Item
+						key={field.name}
+						label={field.label}
+						name={field.name}
+						rules={[
+							{
+								required: true,
+								message: field.message,
+							},
+						]}
+					>
+						{field.component &&
+							React.cloneElement(field.component, {
+								placeholder: field.placeholder,
+							})}
+					</Form.Item>
+				))}
 				<Form.Item
 					label="Payment method"
 					name="paymentMethod"
