@@ -17,6 +17,18 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 							<h2 className="text-4xl font-bold text text-slate-700">
 								LOGO
 							</h2>
+							<div className="invoice-details">
+								<div>
+									<div className="text-md">
+										<p className="font-bold">
+											Invoice Details:
+										</p>
+										Unwrapped <p>Fake Street 123</p>
+										<p>San Javier</p>
+										<p>CA 12345</p>
+									</div>
+								</div>
+							</div>
 						</div>
 					</article>
 				</div>
