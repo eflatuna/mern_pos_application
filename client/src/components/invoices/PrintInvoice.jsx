@@ -79,19 +79,19 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 										</th>
 										<th
 											scope="col"
-											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden"
+											className="py-3.5 pt-4 text-center font-normal text-sm text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden"
 										>
 											Price
 										</th>
 										<th
 											scope="col"
-											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden"
+											className="py-3.5 pt-4 text-center font-normal text-sm text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden"
 										>
 											Quantity
 										</th>
 										<th
 											scope="col"
-											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden"
+											className="py-3.5 pt-4font-normal text-sm text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden text-end"
 										>
 											Total
 										</th>
@@ -102,11 +102,35 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 										<td className="py-4 pl-4 pr-3">
 											<img
 												src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZyyRD7OkXlJDE9hgjrKwZ30rwLqwOaJbMiQ&s"
+												className="w-12 h-12 object-cover"
 												alt=""
 											/>
 										</td>
+										<td className="py-4 pr-3">
+											<span>Apple</span>
+										</td>
+										<td className="py-4 pr-3 text-center">
+											<span>100€</span>
+										</td>
+										<td className="py-4 pr-3 text-center">
+											<span>50</span>
+										</td>
+										<td className="py-4 pr-3 text-end">
+											<span>1</span>
+										</td>
 									</tr>
 								</tbody>
+								<tfoot>
+									<tr>
+										<th
+											className="text-right"
+											colSpan={4}
+											scope="row"
+										>
+											Subtotal
+										</th>
+									</tr>
+								</tfoot>
 							</table>
 						</div>
 					</article>
