@@ -43,7 +43,7 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 											Invoice Nummer
 										</p>
 										<p>00041</p>
-										<p className="font-bold text-slate-700">
+										<p className="font-bold text-slate-700 mt-2">
 											Date of Issue
 										</p>
 										<p>2022-01-01</p>
@@ -52,14 +52,26 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 										<p className="font-bold text-slate-700">
 											Terms:
 										</p>
-										<p>0 Day</p>
-										<p className="font-bold text-slate-700">
+										<p>10 Days</p>
+										<p className="font-bold text-slate-700 mt-2">
 											Due
 										</p>
-										<p>CA 12345</p>
+										<p>22.01.2022</p>
 									</div>
 								</div>
 							</div>
+						</div>
+						<div className="invoice-table-area mt-8">
+							<table className="min-w-full divide-y divide-slate-500 overflow-hidden">
+								<thead>
+									<tr>
+										<th scope="col" className="py-3.5 pt-4">
+											Image
+										</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
 						</div>
 					</article>
 				</div>
