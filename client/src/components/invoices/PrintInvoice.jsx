@@ -65,12 +65,48 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 							<table className="min-w-full divide-y divide-slate-500 overflow-hidden">
 								<thead>
 									<tr>
-										<th scope="col" className="py-3.5 pt-4">
+										<th
+											scope="col"
+											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden"
+										>
 											Image
+										</th>
+										<th
+											scope="col"
+											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden"
+										>
+											Title
+										</th>
+										<th
+											scope="col"
+											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden"
+										>
+											Price
+										</th>
+										<th
+											scope="col"
+											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden"
+										>
+											Quantity
+										</th>
+										<th
+											scope="col"
+											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden"
+										>
+											Total
 										</th>
 									</tr>
 								</thead>
-								<tbody></tbody>
+								<tbody>
+									<tr>
+										<td className="py-4 pl-4 pr-3">
+											<img
+												src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZyyRD7OkXlJDE9hgjrKwZ30rwLqwOaJbMiQ&s"
+												alt=""
+											/>
+										</td>
+									</tr>
+								</tbody>
 							</table>
 						</div>
 					</article>
