@@ -1,4 +1,4 @@
-import { Modal } from "antd";
+import { Button, Modal } from "antd";
 
 const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 	const closeModal = () => setIsModalOpen(false);
@@ -98,7 +98,28 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
+									<tr className="border-b border-t border-slate-200">
+										<td className="py-4 pl-4">
+											<img
+												src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZyyRD7OkXlJDE9hgjrKwZ30rwLqwOaJbMiQ&s"
+												className="w-12 h-12 object-cover"
+												alt=""
+											/>
+										</td>
+										<td className="py-4 ">
+											<span>Apple</span>
+										</td>
+										<td className="py-4 text-center">
+											<span>2€</span>
+										</td>
+										<td className="py-4 text-right">
+											<span>50</span>
+										</td>
+										<td className="py-4 text-end">
+											<span>100€</span>
+										</td>
+									</tr>
+									<tr className="border-b border-t border-slate-200">
 										<td className="py-4 pl-4">
 											<img
 												src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZyyRD7OkXlJDE9hgjrKwZ30rwLqwOaJbMiQ&s"
@@ -201,6 +222,11 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 					</article>
 				</div>
 			</section>
+			<div className="flex justify-end mt-4">
+				<Button type="primary" size="large">
+					Print
+				</Button>
+			</div>
 		</Modal>
 	);
 };
