@@ -72,7 +72,7 @@ const CreateInvoice = ({ setIsModalOpen, isModalOpen }) => {
 						<span>100€</span>
 					</div>
 					<div className="flex justify-between my-2">
-						<span>VAT 20%</span>
+						<span>Tax 20%</span>
 						<span className="text-dark-red">20€</span>
 					</div>
 					<div className="flex justify-between">

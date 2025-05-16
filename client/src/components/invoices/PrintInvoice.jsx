@@ -85,7 +85,7 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 										</th>
 										<th
 											scope="col"
-											className="py-3.5 pt-4 text-center font-normal text-sm text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden"
+											className="py-3.5 pt-4 text-right font-normal text-sm text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden"
 										>
 											Quantity
 										</th>
@@ -99,39 +99,104 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 								</thead>
 								<tbody>
 									<tr>
-										<td className="py-4 pl-4 pr-3">
+										<td className="py-4 pl-4">
 											<img
 												src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZyyRD7OkXlJDE9hgjrKwZ30rwLqwOaJbMiQ&s"
 												className="w-12 h-12 object-cover"
 												alt=""
 											/>
 										</td>
-										<td className="py-4 pr-3">
+										<td className="py-4 ">
 											<span>Apple</span>
 										</td>
-										<td className="py-4 pr-3 text-center">
-											<span>100€</span>
+										<td className="py-4 text-center">
+											<span>2€</span>
 										</td>
-										<td className="py-4 pr-3 text-center">
+										<td className="py-4 text-right">
 											<span>50</span>
 										</td>
-										<td className="py-4 pr-3 text-end">
-											<span>1</span>
+										<td className="py-4 text-end">
+											<span>100€</span>
 										</td>
 									</tr>
 								</tbody>
 								<tfoot>
 									<tr>
 										<th
-											className="text-right"
+											className="text-right pt-6"
 											colSpan={4}
 											scope="row"
 										>
-											Subtotal
+											<span className="font-normal text-slate-700">
+												Subtotal
+											</span>
+										</th>
+										<th
+											className="text-right pt-4"
+											scope="row"
+										>
+											100€
+										</th>
+									</tr>
+									<tr>
+										<th
+											className="text-right pt-4"
+											colSpan={4}
+											scope="row"
+										>
+											<span className="font-normal text-slate-700">
+												Tax
+											</span>
+										</th>
+										<th
+											className="text-right pt-4 text-dark-red"
+											scope="row"
+										>
+											+20€
+										</th>
+									</tr>
+									<tr>
+										<th
+											className="text-right pt-4"
+											colSpan={4}
+											scope="row"
+										>
+											<span className="font-normal text-slate-700">
+												Total
+											</span>
+										</th>
+										<th
+											className="text-right pt-4"
+											scope="row"
+										>
+											120€
 										</th>
 									</tr>
 								</tfoot>
 							</table>
+							<div className="py-9">
+								<div className="border-t pt-9 text-slate-700">
+									<p className="text-sm font-light text-slate-700">
+										We accept payments via credit card, bank
+										transfer, and cash where applicable. All
+										product prices are listed in EUR (€) and
+										include VAT unless otherwise stated.
+										Full payment must be received before we
+										can process and ship your order. For
+										bank transfers, please ensure that you
+										include your order number in the payment
+										reference to avoid delays. Invoices are
+										issued automatically once the payment is
+										confirmed. In case of late or incomplete
+										payments, your order may be delayed or
+										cancelled without prior notice. If you
+										require a different payment arrangement
+										or have any questions regarding our
+										payment process, feel free to contact
+										our customer support team.
+									</p>
+								</div>
+							</div>
 						</div>
 					</article>
 				</div>
