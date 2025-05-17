@@ -19,7 +19,7 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 								LOGO
 							</h2>
 							<div className="invoice-details">
-								<div className="grid grid-cols-4 gap-12">
+								<div className="grid sm:grid-cols-4 grid-cols-3 gap-12">
 									<div className="text-md text-slate-500">
 										<p className="font-bold text-slate-700">
 											Invoice Details
@@ -48,7 +48,7 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 										</p>
 										<p>2022-01-01</p>
 									</div>
-									<div className="text-md text-slate-500">
+									<div className="text-md text-slate-500 sm:block hidden">
 										<p className="font-bold text-slate-700">
 											Terms:
 										</p>
@@ -67,31 +67,31 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 									<tr>
 										<th
 											scope="col"
-											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden"
+											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 md:pl-0 sm:table-cell hidden"
 										>
 											Image
 										</th>
 										<th
 											scope="col"
-											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden"
+											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 md:pl-0 "
 										>
 											Title
 										</th>
 										<th
 											scope="col"
-											className="py-3.5 pt-4 text-center font-normal text-sm text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden"
+											className="py-3.5 pt-4 text-center font-normal text-sm text-slate-700 md:pl-0 sm:table-cell hidden"
 										>
 											Price
 										</th>
 										<th
 											scope="col"
-											className="py-3.5 pt-4 text-right font-normal text-sm text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden"
+											className="py-3.5 pt-4 text-right font-normal text-sm text-slate-700 md:pl-0 sm:table-cell hidden"
 										>
 											Quantity
 										</th>
 										<th
 											scope="col"
-											className="py-3.5 pt-4font-normal text-sm text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden text-end"
+											className="py-3.5 pt-4font-normal text-sm text-slate-700 md:pl-0 sm:table-cell hidden text-end"
 										>
 											Total
 										</th>
@@ -99,7 +99,7 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 								</thead>
 								<tbody>
 									<tr className="border-b border-t border-slate-200">
-										<td className="py-4 pl-4">
+										<td className="py-4 ">
 											<img
 												src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZyyRD7OkXlJDE9hgjrKwZ30rwLqwOaJbMiQ&s"
 												className="w-12 h-12 object-cover"
@@ -120,7 +120,7 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 										</td>
 									</tr>
 									<tr className="border-b border-t border-slate-200">
-										<td className="py-4 pl-4">
+										<td className="py-4">
 											<img
 												src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZyyRD7OkXlJDE9hgjrKwZ30rwLqwOaJbMiQ&s"
 												className="w-12 h-12 object-cover"
@@ -144,13 +144,21 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 								<tfoot>
 									<tr>
 										<th
-											className="text-right pt-6"
+											className="text-right pt-4 sm:table-cell hidden"
 											colSpan={4}
 											scope="row"
 										>
 											<span className="font-normal text-slate-700">
 												Subtotal
 											</span>
+										</th>
+										<th
+											className="text-left pt-4 sm:hidden"
+											scope="row"
+										>
+											<p className="font-normal text-slate-700">
+												Subtotal
+											</p>
 										</th>
 										<th
 											className="text-right pt-4"
