@@ -73,7 +73,14 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 										</th>
 										<th
 											scope="col"
-											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 md:pl-0 "
+											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 md:pl-0 sm:table-cell hidden "
+										>
+											Title
+										</th>
+										<th
+											scope="col"
+											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 md:pl-0 sm:hidden"
+											colSpan={4}
 										>
 											Title
 										</th>
@@ -91,7 +98,7 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 										</th>
 										<th
 											scope="col"
-											className="py-3.5 pt-4font-normal text-sm text-slate-700 md:pl-0 sm:table-cell hidden text-end"
+											className="py-3.5 pt-4font-normal text-sm text-slate-700 md:pl-0 text-end"
 										>
 											Total
 										</th>
@@ -99,7 +106,7 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 								</thead>
 								<tbody>
 									<tr className="border-b border-t border-slate-200">
-										<td className="py-4 ">
+										<td className="py-4 sm:table-cell hidden">
 											<img
 												src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZyyRD7OkXlJDE9hgjrKwZ30rwLqwOaJbMiQ&s"
 												className="w-12 h-12 object-cover"
@@ -107,36 +114,22 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 											/>
 										</td>
 										<td className="py-4 ">
-											<span>Apple</span>
+											<div className="flex flex-col">
+												<span className="font-medium ">
+													Apple
+												</span>
+												<span className="sm:hidden inline-block text-xs">
+													1 unit at 2€
+												</span>
+											</div>
 										</td>
-										<td className="py-4 text-center">
+										<td className="py-4 text-center sm:table-cell hidden">
 											<span>2€</span>
 										</td>
-										<td className="py-4 text-right">
+										<td className="py-4 text-right sm:table-cell hidden">
 											<span>50</span>
 										</td>
-										<td className="py-4 text-end">
-											<span>100€</span>
-										</td>
-									</tr>
-									<tr className="border-b border-t border-slate-200">
-										<td className="py-4">
-											<img
-												src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZyyRD7OkXlJDE9hgjrKwZ30rwLqwOaJbMiQ&s"
-												className="w-12 h-12 object-cover"
-												alt=""
-											/>
-										</td>
-										<td className="py-4 ">
-											<span>Apple</span>
-										</td>
-										<td className="py-4 text-center">
-											<span>2€</span>
-										</td>
-										<td className="py-4 text-right">
-											<span>50</span>
-										</td>
-										<td className="py-4 text-end">
+										<td className="py-4 text-end ">
 											<span>100€</span>
 										</td>
 									</tr>
@@ -155,6 +148,7 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 										<th
 											className="text-left pt-4 sm:hidden"
 											scope="row"
+											colSpan={4}
 										>
 											<p className="font-normal text-slate-700">
 												Subtotal
@@ -169,7 +163,16 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 									</tr>
 									<tr>
 										<th
-											className="text-right pt-4"
+											className="text-right pt-4 sm:table-cell hidden"
+											colSpan={4}
+											scope="row"
+										>
+											<span className="font-normal text-slate-700">
+												Tax
+											</span>
+										</th>
+										<th
+											className="text-left pt-4 sm:hidden"
 											colSpan={4}
 											scope="row"
 										>
@@ -186,7 +189,16 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 									</tr>
 									<tr>
 										<th
-											className="text-right pt-4"
+											className="text-right pt-4 sm:table-cell hidden"
+											colSpan={4}
+											scope="row"
+										>
+											<span className="font-normal text-slate-700">
+												Total
+											</span>
+										</th>
+										<th
+											className="text-left pt-4 sm:hidden"
 											colSpan={4}
 											scope="row"
 										>
