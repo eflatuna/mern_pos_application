@@ -98,7 +98,7 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 										</th>
 										<th
 											scope="col"
-											className="py-3.5 pt-4font-normal text-sm text-slate-700 md:pl-0 text-end"
+											className="py-3.5 pt-4 font-normal text-sm text-slate-700 md:pl-0 text-end"
 										>
 											Total
 										</th>
@@ -110,7 +110,7 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 											<img
 												src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZyyRD7OkXlJDE9hgjrKwZ30rwLqwOaJbMiQ&s"
 												className="w-12 h-12 object-cover"
-												alt=""
+												alt="Product"
 											/>
 										</td>
 										<td className="py-4 sm:table-cell hidden">
