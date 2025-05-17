@@ -113,7 +113,20 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 												alt=""
 											/>
 										</td>
-										<td className="py-4 ">
+										<td className="py-4 sm:table-cell hidden">
+											<div className="flex flex-col">
+												<span className="font-medium ">
+													Apple
+												</span>
+												<span className="sm:hidden inline-block text-xs">
+													1 unit at 2€
+												</span>
+											</div>
+										</td>
+										<td
+											className="py-4 sm:hidden text-left"
+											colSpan={4}
+										>
 											<div className="flex flex-col">
 												<span className="font-medium ">
 													Apple
