@@ -1,3 +1,4 @@
+import AnalyticCard from "../components/analytics/AnalyticCard";
 import Header from "../components/Header/Header";
 
 const AnalyticPage = () => {
@@ -15,22 +16,27 @@ const AnalyticPage = () => {
 							Admin
 						</span>
 					</h2>
-					<div className="analytic-cards grid grid-cols-4">
-						<div className="card-item bg-gray-800 p-8 rounded-lg">
-							<div className="flex gap-x-2">
-								<div className="rounded-full bg-white w-16 h-16 p-3">
-									<img src="images/user.png" alt="" />
-								</div>
-								<div className="text-white">
-									<p className="mb-2 text-lg font-medium text-gray-400">
-										Total Customers
-									</p>
-									<p className="text-xl font-semibold text-gray-200">
-										125
-									</p>
-								</div>
-							</div>
-						</div>
+					<div className="analytic-cards grid grid-cols-4 my-10 gap-10">
+						<AnalyticCard
+							title={"Total Customers"}
+							amount={125}
+							img={"images/user.png"}
+						/>
+						<AnalyticCard
+							title={"Total Revenue"}
+							amount={"125.00 €"}
+							img={"images/money.png"}
+						/>
+						<AnalyticCard
+							title={"Total Sales"}
+							amount={125}
+							img={"images/sale.png"}
+						/>
+						<AnalyticCard
+							title={"Total Products"}
+							amount={12500}
+							img={"images/product.png"}
+						/>
 					</div>
 				</div>
 			</div>
