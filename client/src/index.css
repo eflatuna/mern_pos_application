@@ -13,7 +13,7 @@ body {
 }
 @media (min-width: 768px) {
 	body {
-		overflow: hidden;
+		overflow: auto;
 	}
 	.categories::-webkit-scrollbar {
 		display: none;
