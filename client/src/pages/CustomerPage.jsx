@@ -39,7 +39,7 @@ const CustomerPage = () => {
 		<>
 			<Header />
 			<div className="px-6 ">
-				<h1 text-4xl font-bold text-center mb-4>
+				<h1 className="text-4xl font-bold text-center mb-4">
 					Customers
 				</h1>
 				<Table
