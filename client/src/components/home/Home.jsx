@@ -1,6 +1,7 @@
 import Categories from "../categories/Categories";
 import Products from "../products/Products";
 import CartTotal from "../cart_totals/CartTotal";
+import { Header } from "antd/es/layout/layout";
 
 const Home = () => {
 	return (

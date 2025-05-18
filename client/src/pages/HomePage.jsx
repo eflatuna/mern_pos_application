@@ -1,4 +1,4 @@
-import { Header } from "antd/es/layout/layout";
+import Header from "../components/Header/Header";
 import CartTotal from "../components/cart_totals/CartTotal";
 import Categories from "../components/categories/Categories";
 import Products from "../components/products/Products";
