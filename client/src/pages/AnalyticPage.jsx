@@ -8,6 +8,14 @@ const AnalyticPage = () => {
 				<h1 className="text-4xl font-bold text-center mb-4">
 					Analytics
 				</h1>
+				<div>
+					<h2 className="text-xl">
+						Welcome
+						<span className="text-light-green font-bold text-xl">
+							Admin
+						</span>
+					</h2>
+				</div>
 			</div>
 		</>
 	);
