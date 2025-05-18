@@ -16,7 +16,7 @@ const AnalyticPage = () => {
 							Admin
 						</span>
 					</h2>
-					<div className="analytic-cards grid grid-cols-4 my-10 gap-10">
+					<div className="analytic-cards grid gap-4 md:grid-cols-2 xl:grid-cols-4 md:gap-10 my-10">
 						<AnalyticCard
 							title={"Total Customers"}
 							amount={125}
