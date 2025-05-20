@@ -4,6 +4,7 @@ import CartPage from "./pages/CartPage";
 import InvoicePage from "./pages/InvoicePage";
 import CustomerPage from "./pages/CustomerPage";
 import AnalyticPage from "./pages/AnalyticPage";
+import Register from "./pages/auth/Register";
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 				<Route path="/invoices" element={<InvoicePage />} />
 				<Route path="/customers" element={<CustomerPage />} />
 				<Route path="/analytics" element={<AnalyticPage />} />
+				<Route path="/register" element={<Register />} />
 			</Routes>
 		</BrowserRouter>
 	);
