@@ -76,22 +76,77 @@ const Register = () => {
 						</Link>
 					</div>
 				</div>
-				<div className="xl:w-4/6 min-w-[800px] bg-[#6c63ff]">
-					<div className="w-full">
-						<Carousel>
-							<div>
-								<h3>1</h3>
-							</div>
-							<div>
-								<h3>2</h3>
-							</div>
-							<div>
-								<h3>3</h3>
-							</div>
-							<div>
-								<h3>4</h3>
-							</div>
-						</Carousel>
+				<div className="xl:w-4/6 lg:w-3/5 md:w-1/2 md:flex hidden  bg-[#6c63ff]">
+					<div className="w-full h-full flex items-center">
+						<div className="w-full">
+							<Carousel className="!h-full">
+								<div className="!flex flex-col items-center justify-center h-full mb-10 ">
+									<img
+										src="/images/responsive.svg"
+										alt="responsive"
+										className="w-[600px] h-[500px]"
+									/>
+									<h3 className="text-4xl text-center font-bold text-white">
+										Responsive
+									</h3>
+									<p className="mt-5 text-xl text-center text-white">
+										Compatible with all device sizes{" "}
+									</p>
+								</div>
+								<div className="!flex flex-col items-center justify-center h-full mb-10">
+									<img
+										src="/images/responsive.svg"
+										alt="responsive"
+										className="w-[600px] h-[500px]"
+									/>
+									<h3 className="text-4xl text-center font-bold text-white">
+										Responsive
+									</h3>
+									<p className="mt-5 text-xl text-center text-white">
+										Compatible with all device sizes{" "}
+									</p>
+								</div>
+								<div className="!flex flex-col items-center justify-center h-full mb-10">
+									<img
+										src="/images/responsive.svg"
+										alt="responsive"
+										className="w-[600px] h-[500px]"
+									/>
+									<h3 className="text-4xl text-center font-bold text-white">
+										Responsive
+									</h3>
+									<p className="mt-5 text-xl text-center text-white">
+										Compatible with all device sizes{" "}
+									</p>
+								</div>
+								<div className="!flex flex-col items-center justify-center h-full mb-10">
+									<img
+										src="/images/responsive.svg"
+										alt="responsive"
+										className="w-[600px] h-[500px]"
+									/>
+									<h3 className="text-4xl text-center font-bold text-white">
+										Responsive
+									</h3>
+									<p className="mt-5 text-xl text-center text-white">
+										Compatible with all device sizes{" "}
+									</p>
+								</div>
+								<div className="!flex flex-col items-center justify-center h-full mb-10">
+									<img
+										src="/images/responsive.svg"
+										alt="responsive"
+										className="w-[600px] h-[500px]"
+									/>
+									<h3 className="text-4xl text-center font-bold text-white">
+										Responsive
+									</h3>
+									<p className="mt-5 text-xl text-center text-white">
+										Compatible with all device sizes{" "}
+									</p>
+								</div>
+							</Carousel>
+						</div>
 					</div>
 				</div>
 			</div>
