@@ -1,6 +1,35 @@
 import { Button, Carousel, Form, Input } from "antd";
 import { Link } from "react-router-dom";
+import AuthCarousel from "../../components/auth/AuthCarousel";
 const Register = () => {
+	const slides = [
+		{
+			img: "images/responsive.svg",
+			title: "Fully Responsive Design",
+			desc: "Looks perfect on desktops, tablets, and mobile devices.",
+		},
+		{
+			img: "images/analytic.svg",
+			title: "Data-Driven Insights",
+			desc: "Track performance and make better decisions with advanced analytics.",
+		},
+		{
+			img: "images/customerSatisfaction.svg",
+			title: "Customer Satisfaction",
+			desc: "We prioritize user experience to keep our customers happy.",
+		},
+		{
+			img: "images/adminPanel.svg",
+			title: "Powerful Admin Panel",
+			desc: "Manage your platform easily with a clean and intuitive dashboard.",
+		},
+		{
+			img: "images/customer.svg",
+			title: "Dedicated Support Team",
+			desc: "Get help anytime from our 24/7 customer support experts.",
+		},
+	];
+
 	return (
 		<div className="h-screen">
 			<div className="flex justify-between h-full">
@@ -79,72 +108,17 @@ const Register = () => {
 				<div className="xl:w-4/6 lg:w-3/5 md:w-1/2 md:flex hidden  bg-[#6c63ff]">
 					<div className="w-full h-full flex items-center">
 						<div className="w-full">
-							<Carousel className="!h-full">
-								<div className="!flex flex-col items-center justify-center h-full mb-10 ">
-									<img
-										src="/images/responsive.svg"
-										alt="responsive"
-										className="w-[600px] h-[500px]"
-									/>
-									<h3 className="text-4xl text-center font-bold text-white">
-										Responsive
-									</h3>
-									<p className="mt-5 text-xl text-center text-white">
-										Compatible with all device sizes{" "}
-									</p>
-								</div>
-								<div className="!flex flex-col items-center justify-center h-full mb-10">
-									<img
-										src="/images/responsive.svg"
-										alt="responsive"
-										className="w-[600px] h-[500px]"
-									/>
-									<h3 className="text-4xl text-center font-bold text-white">
-										Responsive
-									</h3>
-									<p className="mt-5 text-xl text-center text-white">
-										Compatible with all device sizes{" "}
-									</p>
-								</div>
-								<div className="!flex flex-col items-center justify-center h-full mb-10">
-									<img
-										src="/images/responsive.svg"
-										alt="responsive"
-										className="w-[600px] h-[500px]"
-									/>
-									<h3 className="text-4xl text-center font-bold text-white">
-										Responsive
-									</h3>
-									<p className="mt-5 text-xl text-center text-white">
-										Compatible with all device sizes{" "}
-									</p>
-								</div>
-								<div className="!flex flex-col items-center justify-center h-full mb-10">
-									<img
-										src="/images/responsive.svg"
-										alt="responsive"
-										className="w-[600px] h-[500px]"
-									/>
-									<h3 className="text-4xl text-center font-bold text-white">
-										Responsive
-									</h3>
-									<p className="mt-5 text-xl text-center text-white">
-										Compatible with all device sizes{" "}
-									</p>
-								</div>
-								<div className="!flex flex-col items-center justify-center h-full mb-10">
-									<img
-										src="/images/responsive.svg"
-										alt="responsive"
-										className="w-[600px] h-[500px]"
-									/>
-									<h3 className="text-4xl text-center font-bold text-white">
-										Responsive
-									</h3>
-									<p className="mt-5 text-xl text-center text-white">
-										Compatible with all device sizes{" "}
-									</p>
-								</div>
+							<Carousel className="!h-full px-6">
+								{slides.map((slide, index) => {
+									return (
+										<AuthCarousel
+											key={index}
+											img={slide.img}
+											title={slide.title}
+											desc={slide.desc}
+										/>
+									);
+								})}
 							</Carousel>
 						</div>
 					</div>
