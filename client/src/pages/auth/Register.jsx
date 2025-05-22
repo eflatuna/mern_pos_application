@@ -1,4 +1,4 @@
-import { Button, Form, Input } from "antd";
+import { Button, Carousel, Form, Input } from "antd";
 import { Link } from "react-router-dom";
 const Register = () => {
 	return (
@@ -76,7 +76,24 @@ const Register = () => {
 						</Link>
 					</div>
 				</div>
-				<div className="xl:w-4/6 min-w-[800px]">right</div>
+				<div className="xl:w-4/6 min-w-[800px] bg-[#6c63ff]">
+					<div className="w-full">
+						<Carousel>
+							<div>
+								<h3>1</h3>
+							</div>
+							<div>
+								<h3>2</h3>
+							</div>
+							<div>
+								<h3>3</h3>
+							</div>
+							<div>
+								<h3>4</h3>
+							</div>
+						</Carousel>
+					</div>
+				</div>
 			</div>
 		</div>
 	);
