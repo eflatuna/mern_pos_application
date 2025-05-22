@@ -1,7 +1,7 @@
 import { Button, Carousel, Form, Input } from "antd";
 import { Link } from "react-router-dom";
 import AuthCarousel from "../../components/auth/AuthCarousel";
-const Register = () => {
+const Login = () => {
 	const slides = [
 		{
 			img: "images/responsive.svg",
@@ -128,4 +128,4 @@ const Register = () => {
 	);
 };
 
-export default Register;
+export default Login;
