@@ -2,6 +2,15 @@ const Category = require("../models/Category.js");
 const express = require("express");
 const router = express.Router();
 
+router.get("/get-all", async (req, res) => {
+	try {
+		const categories = await Category.find();
+		res.send(categories);
+	} catch (error) {
+		console.log(error);
+	}
+});
+
 router.post("/add-category", async (req, res) => {
 	try {
 		const newCategory = new Category(req.body);
