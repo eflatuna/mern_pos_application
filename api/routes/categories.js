@@ -21,4 +21,13 @@ router.post("/add-category", async (req, res) => {
 	}
 });
 
+router.put("/update-category", async (req, res) => {
+	try {
+		await Category.findOneAndUpdate({ _id }, req.body);
+		res.status(200).json("Category has been updated");
+	} catch (error) {
+		console.log(error);
+	}
+});
+
 module.exports = router;
