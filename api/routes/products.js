@@ -11,7 +11,7 @@ router.get("/get-all", async (req, res) => {
 	}
 });
 
-router.post("/add-Product", async (req, res) => {
+router.post("/add-product", async (req, res) => {
 	try {
 		const newProduct = new Product(req.body);
 		await newProduct.save();
@@ -21,7 +21,7 @@ router.post("/add-Product", async (req, res) => {
 	}
 });
 
-router.put("/update-Product", async (req, res) => {
+router.put("/update-product", async (req, res) => {
 	try {
 		await Product.findOneAndUpdate({ _id: req.body.ProductId }, req.body);
 		res.status(200).json("Product has been updated");
@@ -29,7 +29,7 @@ router.put("/update-Product", async (req, res) => {
 		console.log(error);
 	}
 });
-router.delete("/delete-Product", async (req, res) => {
+router.delete("/delete-product", async (req, res) => {
 	try {
 		await Product.findOneAndDelete({ _id: req.body.ProductId });
 		res.status(200).json("Product deleted");
