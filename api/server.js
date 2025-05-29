@@ -7,7 +7,7 @@ const cors = require("cors");
 const port = 5000;
 
 //routes
-
+const categoryRoute = require("./routes/categories.js");
 const productRoute = require("./routes/products.js");
 
 dotenv.config();
