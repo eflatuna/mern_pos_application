@@ -9,6 +9,7 @@ const port = 5000;
 //routes
 const categoryRoute = require("./routes/categories.js");
 const productRoute = require("./routes/products.js");
+const invoiceRoute = require("./routes/invoices.js");
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use(cors());
 
 app.use("/api/categories", categoryRoute);
 app.use("/api/products", productRoute);
+app.use("/api/invoices", invoiceRoute);
 
 app.get("/", (req, res) => res.send("Hello World!"));
 
