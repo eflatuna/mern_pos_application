@@ -1,4 +1,4 @@
-const invoice = require("../models/invoice.js");
+const Invoice = require("../models/Invoice.js");
 const express = require("express");
 const router = express.Router();
 
@@ -13,7 +13,7 @@ router.get("/get-all", async (req, res) => {
 
 router.post("/add-invoice", async (req, res) => {
 	try {
-		const newInvoice = new invoice(req.body);
+		const newInvoice = new Invoice(req.body);
 		await newInvoice.save();
 		res.status(200).json("invoice has been created");
 	} catch (error) {
