@@ -17,7 +17,7 @@ router.post("/register", async (req, res) => {
 		await newUser.save();
 		res.status(200).json("User has been created");
 	} catch (error) {
-		res.status(400).json(error);
+		res.status(500).json(error);
 	}
 });
 
@@ -41,7 +41,7 @@ router.post("/login", async (req, res) => {
 
 		res.send(user);
 	} catch (error) {
-		res.status(400).json(error);
+		res.status(500).json(error);
 	}
 });
 

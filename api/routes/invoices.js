@@ -7,7 +7,7 @@ router.get("/get-all", async (req, res) => {
 		const invoices = await invoice.find();
 		res.status(200).json(invoices);
 	} catch (error) {
-		console.log(error);
+		res.status(500).json(error);
 	}
 });
 
@@ -17,7 +17,7 @@ router.post("/add-invoice", async (req, res) => {
 		await newInvoice.save();
 		res.status(200).json("invoice has been created");
 	} catch (error) {
-		res.status(400).json(error);
+		res.status(500).json(error);
 	}
 });
 
