@@ -1,6 +1,15 @@
+import { useState } from "react";
 import "./style.css";
 import { PlusOutlined } from "@ant-design/icons";
+import { Button, Form, Input, Modal } from "antd";
 const Categories = () => {
+	const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+	const onFinish = (values) => {
+		try {
+		} catch (error) {}
+	};
+
 	const categoryList = [
 		"All",
 		"Food",
@@ -18,9 +27,39 @@ const Categories = () => {
 					<span>{category}</span>
 				</li>
 			))}
-			<li className="category-item">
-				<PlusOutlined className="md:text-2xl" />
+			<li className="category-item !bg-purple-800 hover:opacity-90">
+				<PlusOutlined
+					className="md:text-2xl"
+					onClick={() => setIsAddModalOpen(true)}
+				/>
 			</li>
+			<Modal
+				title="Add New Category"
+				closable={{ "aria-label": "Custom Close Button" }}
+				open={isAddModalOpen}
+				onCancel={() => setIsAddModalOpen(false)}
+				footer={false}
+			>
+				<Form layout="vertical" onFinish={onFinish}>
+					<Form.Item
+						name={"title"}
+						label="Add Category"
+						rules={[
+							{
+								required: true,
+								message: "Category cannot be empty!",
+							},
+						]}
+					>
+						<Input placeholder="Add Category" />
+					</Form.Item>
+					<Form.Item className="flex justify-end mb-0">
+						<Button type="primary" htmlType="submit">
+							Create
+						</Button>
+					</Form.Item>
+				</Form>
+			</Modal>
 		</ul>
 	);
 };
