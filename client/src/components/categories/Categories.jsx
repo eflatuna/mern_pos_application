@@ -1,13 +1,25 @@
 import { useState } from "react";
 import "./style.css";
 import { PlusOutlined } from "@ant-design/icons";
-import { Button, Form, Input, Modal } from "antd";
+import { Button, Form, Input, message, Modal } from "antd";
 const Categories = () => {
 	const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+	const [form] = Form.useForm();
 
 	const onFinish = (values) => {
 		try {
-		} catch (error) {}
+			fetch("http://localhost:5000/api/categories/add-category", {
+				method: "POST",
+				body: JSON.stringify(values),
+				headers: {
+					"Content-Type": "application/json; charset=UTF-8",
+				},
+			});
+			message.success("Category has been created");
+			form.resetFields();
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const categoryList = [
@@ -40,7 +52,7 @@ const Categories = () => {
 				onCancel={() => setIsAddModalOpen(false)}
 				footer={false}
 			>
-				<Form layout="vertical" onFinish={onFinish}>
+				<Form layout="vertical" onFinish={onFinish} form={form}>
 					<Form.Item
 						name={"title"}
 						label="Add Category"
