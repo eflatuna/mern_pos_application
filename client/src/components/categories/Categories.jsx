@@ -1,3 +1,5 @@
+import "./style.css";
+import { PlusOutlined } from "@ant-design/icons";
 const Categories = () => {
 	const categoryList = [
 		"All",
@@ -12,13 +14,13 @@ const Categories = () => {
 	return (
 		<ul className="flex gap-4 md:flex-col text-center text-lg ">
 			{categoryList.map((category, index) => (
-				<li
-					key={index}
-					className="bg-light-green px-6 py-10 text-white cursor-pointer hover:bg-light-yellow transition-all min-w-[145px]"
-				>
+				<li key={index} className="category-item">
 					<span>{category}</span>
 				</li>
 			))}
+			<li className="category-item">
+				<PlusOutlined className="md:text-2xl" />
+			</li>
 		</ul>
 	);
 };
