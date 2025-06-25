@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./style.css";
 import { PlusOutlined } from "@ant-design/icons";
 import { Button, Form, Input, message, Modal } from "antd";
-const Categories = () => {
+const Categories = ({ categories }) => {
 	const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 	const [form] = Form.useForm();
 
