@@ -34,6 +34,28 @@ const EditCategory = ({
 			console.log(error);
 		}
 	};
+
+	const deleteCategory = (id) => {
+		if (window.confirm("Are you sure you want to delete this category?")) {
+			try {
+				fetch("http://localhost:5000/api/categories/delete-category", {
+					method: "DELETE",
+					body: JSON.stringify({
+						categoryId: id,
+					}),
+					headers: {
+						"Content-Type": "application/json; charset=UTF-8",
+					},
+				});
+				message.success("Category has been deleted");
+				setCategories(categories.filter((item) => item._id !== id));
+			} catch (error) {
+				message.error("Failed to delete category");
+				console.log(error);
+			}
+		}
+	};
+
 	const columns = [
 		{
 			title: "Category",
@@ -71,7 +93,11 @@ const EditCategory = ({
 						>
 							Save
 						</Button>
-						<Button type="link" danger>
+						<Button
+							type="link"
+							danger
+							onClick={() => deleteCategory(record._id)}
+						>
 							Delete
 						</Button>
 					</div>
