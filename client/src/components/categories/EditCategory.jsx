@@ -9,12 +9,15 @@ const EditCategory = ({ isEditModalOpen, setIsEditModalOpen, categories }) => {
 			title: "Category",
 			dataIndex: "title",
 			render: (_, record) => {
-				return (
-					<Form.Item className="mb-0">
-						{/* <Input /> */}
-						{record.title}
-					</Form.Item>
-				);
+				if (record._id === editingRow?._id) {
+					return (
+						<Form.Item className="mb-0">
+							<Input />
+						</Form.Item>
+					);
+				} else {
+					return <p>{record.title}</p>;
+				}
 			},
 		},
 		{
@@ -47,7 +50,12 @@ const EditCategory = ({ isEditModalOpen, setIsEditModalOpen, categories }) => {
 			onCancel={() => setIsEditModalOpen(false)}
 		>
 			<Form>
-				<Table bordered dataSource={categories} columns={columns} />
+				<Table
+					bordered
+					dataSource={categories}
+					columns={columns}
+					rowKey={"_id"}
+				/>
 			</Form>
 		</Modal>
 	);
