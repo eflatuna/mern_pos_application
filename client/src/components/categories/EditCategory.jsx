@@ -1,5 +1,5 @@
 import { Button, Form, Input, message, Modal, Table } from "antd";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const EditCategory = ({
 	isEditModalOpen,
@@ -75,7 +75,7 @@ const EditCategory = ({
 		{
 			title: "Action",
 			dataIndex: "action",
-			render: (text, record) => {
+			render: (_, record) => {
 				return (
 					<div>
 						{" "}
