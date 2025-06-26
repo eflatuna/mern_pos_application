@@ -17,7 +17,10 @@ const AddCategory = ({
 			});
 			message.success("Category has been created");
 			form.resetFields();
-			setCategories([...categories, values]);
+			setCategories([
+				...categories,
+				{ _id: Math.random(), title: values.title },
+			]);
 		} catch (error) {
 			console.log(error);
 		}
