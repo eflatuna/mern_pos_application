@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./style.css";
 import { PlusOutlined } from "@ant-design/icons";
 import { Button, Form, Input, message, Modal } from "antd";
-const Categories = ({ categories }) => {
+const Categories = ({ categories, setCategories }) => {
 	const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 	const [form] = Form.useForm();
 
@@ -17,26 +17,17 @@ const Categories = ({ categories }) => {
 			});
 			message.success("Category has been created");
 			form.resetFields();
+			setCategories([...categories, values]);
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
-	const categoryList = [
-		"All",
-		"Food",
-		"Drinks",
-		"Desserts",
-		"Snacks",
-		"Beverages",
-		"Others",
-	];
-
 	return (
 		<ul className="flex gap-4 md:flex-col text-center text-lg ">
-			{categoryList.map((category, index) => (
-				<li key={index} className="category-item">
-					<span>{category}</span>
+			{categories.map((item) => (
+				<li className="category-item" key={item._id}>
+					<span>{item.title}</span>
 				</li>
 			))}
 			<li className="category-item !bg-purple-800 hover:opacity-90">
