@@ -4,11 +4,13 @@ const AddProduct = ({
 	isAddModalOpen,
 	setIsAddModalOpen,
 	categories,
-	setCategories,
+	products,
+	setProducts,
 }) => {
 	const onFinish = (values) => {
+		// console.log(values);
 		try {
-			fetch("http://localhost:5000/api/categories/add-category", {
+			fetch("http://localhost:5000/api/products/add-product", {
 				method: "POST",
 				body: JSON.stringify(values),
 				headers: {
@@ -17,9 +19,9 @@ const AddProduct = ({
 			});
 			message.success("Category has been created");
 			form.resetFields();
-			setCategories([
-				...categories,
-				{ _id: Math.random(), title: values.title },
+			setProducts([
+				...products,
+				{ ...values, _id: Math.random(), price: Number(values.price) },
 			]);
 		} catch (error) {
 			console.log(error);

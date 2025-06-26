@@ -40,7 +40,8 @@ const Products = ({ categories, setCategories }) => {
 				isAddModalOpen={isAddModalOpen}
 				setIsAddModalOpen={setIsAddModalOpen}
 				categories={categories}
-				setCategories={setCategories}
+				products={products}
+				setProducts={setProducts}
 			/>
 		</div>
 	);
