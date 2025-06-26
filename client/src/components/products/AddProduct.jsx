@@ -7,10 +7,10 @@ const AddProduct = ({
 	products,
 	setProducts,
 }) => {
-	const onFinish = (values) => {
+	const onFinish = async (values) => {
 		// console.log(values);
 		try {
-			fetch("http://localhost:5000/api/products/add-product", {
+			await fetch("http://localhost:5000/api/products/add-product", {
 				method: "POST",
 				body: JSON.stringify(values),
 				headers: {
@@ -19,12 +19,14 @@ const AddProduct = ({
 			});
 			message.success("Category has been created");
 			form.resetFields();
+			setIsAddModalOpen(false);
 			setProducts([
 				...products,
 				{ ...values, _id: Math.random(), price: Number(values.price) },
 			]);
 		} catch (error) {
 			console.log(error);
+			message.error("Failed to create product. Please try again.");
 		}
 	};
 	const [form] = Form.useForm();
