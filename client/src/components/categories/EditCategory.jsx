@@ -1,7 +1,12 @@
-import { Button, Form, Input, Modal, Table } from "antd";
+import { Button, Form, Input, message, Modal, Table } from "antd";
 import React, { useState } from "react";
 
-const EditCategory = ({ isEditModalOpen, setIsEditModalOpen, categories }) => {
+const EditCategory = ({
+	isEditModalOpen,
+	setIsEditModalOpen,
+	categories,
+	setCategories,
+}) => {
 	const [editingRow, setEditingRow] = useState(null);
 	const onFinish = (values) => {
 		try {
@@ -15,7 +20,17 @@ const EditCategory = ({ isEditModalOpen, setIsEditModalOpen, categories }) => {
 					"Content-Type": "application/json; charset=UTF-8",
 				},
 			});
+			message.success("Category has been updated");
+			setCategories(
+				categories.map((item) => {
+					if (item._id === editingRow?._id) {
+						return { ...item, title: values.title };
+					}
+					return item;
+				})
+			);
 		} catch (error) {
+			message.error("Failed to update category");
 			console.log(error);
 		}
 	};
@@ -26,7 +41,7 @@ const EditCategory = ({ isEditModalOpen, setIsEditModalOpen, categories }) => {
 			render: (_, record) => {
 				if (record._id === editingRow?._id) {
 					return (
-						<Form.Item className="mb-0">
+						<Form.Item className="mb-0" name="title">
 							<Input defaultValue={record.title} />
 						</Form.Item>
 					);
@@ -45,11 +60,18 @@ const EditCategory = ({ isEditModalOpen, setIsEditModalOpen, categories }) => {
 						<Button
 							type="link"
 							onClick={() => setEditingRow(record)}
+							className="pl-0"
 						>
 							Edit
 						</Button>
-						<Button type="text">Save</Button>
-						<Button type="text" danger>
+						<Button
+							type="link"
+							htmlType="submit"
+							className="!text-gray-500"
+						>
+							Save
+						</Button>
+						<Button type="link" danger>
 							Delete
 						</Button>
 					</div>
