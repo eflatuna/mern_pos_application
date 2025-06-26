@@ -1,10 +1,12 @@
 import { useState } from "react";
-import "./style.css";
-import { PlusOutlined } from "@ant-design/icons";
-
+import { EditOutlined, PlusOutlined } from "@ant-design/icons";
 import AddCategory from "./AddCategory";
+import EditCategory from "./EditCategory";
+import "./style.css";
+
 const Categories = ({ categories, setCategories }) => {
 	const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
 	return (
 		<ul className="flex gap-4 md:flex-col text-center text-lg ">
@@ -19,11 +21,21 @@ const Categories = ({ categories, setCategories }) => {
 					onClick={() => setIsAddModalOpen(true)}
 				/>
 			</li>
+			<li className="category-item !bg-orange-800 hover:opacity-90">
+				<EditOutlined
+					className="md:text-2xl"
+					onClick={() => setIsEditModalOpen(true)}
+				/>
+			</li>
 			<AddCategory
 				isAddModalOpen={isAddModalOpen}
 				setIsAddModalOpen={setIsAddModalOpen}
 				setCategories={setCategories}
 				categories={categories}
+			/>
+			<EditCategory
+				isEditModalOpen={isEditModalOpen}
+				setIsEditModalOpen={setIsEditModalOpen}
 			/>
 		</ul>
 	);
