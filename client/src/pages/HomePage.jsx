@@ -14,7 +14,12 @@ const HomePage = () => {
 					"http://localhost:5000/api/categories/get-all"
 				);
 				const data = await res.json();
-				setCategories(data);
+				data &&
+					setCategories(
+						data.map((item) => {
+							return { ...item, value: item.title };
+						})
+					);
 			} catch (error) {
 				console.log(error);
 			}
