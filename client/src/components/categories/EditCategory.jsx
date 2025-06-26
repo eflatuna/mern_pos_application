@@ -3,7 +3,22 @@ import React, { useState } from "react";
 
 const EditCategory = ({ isEditModalOpen, setIsEditModalOpen, categories }) => {
 	const [editingRow, setEditingRow] = useState(null);
-	console.log(editingRow);
+	const onFinish = (values) => {
+		try {
+			fetch("http://localhost:5000/api/categories/update-category", {
+				method: "PUT",
+				body: JSON.stringify({
+					...values,
+					categoryId: editingRow._id,
+				}),
+				headers: {
+					"Content-Type": "application/json; charset=UTF-8",
+				},
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	};
 	const columns = [
 		{
 			title: "Category",
@@ -12,7 +27,7 @@ const EditCategory = ({ isEditModalOpen, setIsEditModalOpen, categories }) => {
 				if (record._id === editingRow?._id) {
 					return (
 						<Form.Item className="mb-0">
-							<Input />
+							<Input defaultValue={record.title} />
 						</Form.Item>
 					);
 				} else {
@@ -49,7 +64,7 @@ const EditCategory = ({ isEditModalOpen, setIsEditModalOpen, categories }) => {
 			footer={false}
 			onCancel={() => setIsEditModalOpen(false)}
 		>
-			<Form>
+			<Form onFinish={onFinish}>
 				<Table
 					bordered
 					dataSource={categories}
