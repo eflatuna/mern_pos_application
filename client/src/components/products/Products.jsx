@@ -27,13 +27,13 @@ const Products = ({ categories, setCategories }) => {
 			{products.map((item) => (
 				<ProductItem key={item._id} item={item} />
 			))}
-			<div className="product-item border hover:shadow-lg cursor-pointer transition-all select-none bg-purple-800 flex items-center justify-center hover:opacity-90">
+			<div className="product-item border hover:shadow-lg cursor-pointer transition-all select-none bg-purple-800 flex items-center justify-center hover:opacity-90 min-h-[180px]">
 				<PlusOutlined
 					className="text-white md:text-2xl"
 					onClick={() => setIsAddModalOpen(true)}
 				/>
 			</div>
-			<div className="product-item border hover:shadow-lg cursor-pointer transition-all select-none bg-orange-800 flex items-center justify-center hover:opacity-90">
+			<div className="product-item border hover:shadow-lg cursor-pointer transition-all select-none bg-orange-800 flex items-center justify-center hover:opacity-90 min-h-[180px]">
 				<EditOutlined className="text-white md:text-2xl" />
 			</div>
 			<AddProduct
