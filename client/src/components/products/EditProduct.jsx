@@ -1,0 +1,123 @@
+import { Button, Form, Input, message, Modal, Table } from "antd";
+import { useState } from "react";
+
+const EditProduct = ({
+	isEditModalOpen,
+	setIsEditModalOpen,
+	categories,
+	setCategories,
+}) => {
+	const [editingRow, setEditingRow] = useState(null);
+	const onFinish = (values) => {
+		try {
+			fetch("http://localhost:5000/api/categories/update-category", {
+				method: "PUT",
+				body: JSON.stringify({
+					...values,
+					categoryId: editingRow._id,
+				}),
+				headers: {
+					"Content-Type": "application/json; charset=UTF-8",
+				},
+			});
+			message.success("Category has been updated");
+			setCategories(
+				categories.map((item) => {
+					if (item._id === editingRow?._id) {
+						return { ...item, title: values.title };
+					}
+					return item;
+				})
+			);
+		} catch (error) {
+			message.error("Failed to update category");
+			console.log(error);
+		}
+	};
+
+	const deleteCategory = (id) => {
+		if (window.confirm("Are you sure you want to delete this category?")) {
+			try {
+				fetch("http://localhost:5000/api/categories/delete-category", {
+					method: "DELETE",
+					body: JSON.stringify({
+						categoryId: id,
+					}),
+					headers: {
+						"Content-Type": "application/json; charset=UTF-8",
+					},
+				});
+				message.success("Category has been deleted");
+				setCategories(categories.filter((item) => item._id !== id));
+			} catch (error) {
+				message.error("Failed to delete category");
+				console.log(error);
+			}
+		}
+	};
+
+	const columns = [
+		{
+			title: "Product Name",
+			dataIndex: "title",
+			render: (_, record) => {
+				if (record._id === editingRow?._id) {
+					return (
+						<Form.Item className="mb-0" name="title">
+							<Input defaultValue={record.title} />
+						</Form.Item>
+					);
+				} else {
+					return <p>{record.title}</p>;
+				}
+			},
+		},
+		{ title: "Product Image", dataIndex: "img" },
+		{ title: "Product Price", dataIndex: "price" },
+		{ title: "Category", dataIndex: "category" },
+		{
+			title: "Action",
+			dataIndex: "action",
+			render: (_, record) => {
+				return (
+					<div>
+						{" "}
+						<Button
+							type="link"
+							onClick={() => setEditingRow(record)}
+							className="pl-0"
+						>
+							Edit
+						</Button>
+						<Button
+							type="link"
+							htmlType="submit"
+							className="!text-gray-500"
+						>
+							Save
+						</Button>
+						<Button
+							type="link"
+							danger
+							onClick={() => deleteCategory(record._id)}
+						>
+							Delete
+						</Button>
+					</div>
+				);
+			},
+		},
+	];
+	return (
+		<Form onFinish={onFinish}>
+			<Table
+				bordered
+				dataSource={categories}
+				columns={columns}
+				rowKey={"_id"}
+			/>
+		</Form>
+	);
+};
+
+export default EditProduct;
