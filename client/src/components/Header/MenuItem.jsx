@@ -1,5 +1,6 @@
 import { Badge } from "antd";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const MenuItem = ({
 	to,
@@ -13,13 +14,15 @@ const MenuItem = ({
 		${showOnMobile ? "flex" : "hidden"} 
 		${showOnDesktop ? "md:flex" : "md:hidden"}
 	`;
+	const cart = useSelector((state) => state.cart);
+
 	return (
 		<Link
 			to={to}
 			className={`menu-link flex flex-col hover:text-[#40a9ff] transition-all ${responsiveClass}`}
 		>
 			{count ? (
-				<Badge count={count} offset={[0, -4]}>
+				<Badge count={cart.cartItems.length} offset={[0, -4]}>
 					{icon}
 				</Badge>
 			) : (
