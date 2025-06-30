@@ -83,14 +83,14 @@ const EditProduct = () => {
 				fetch("http://localhost:5000/api/products/delete-product", {
 					method: "DELETE",
 					body: JSON.stringify({
-						categoryId: id,
+						productId: id,
 					}),
 					headers: {
 						"Content-Type": "application/json; charset=UTF-8",
 					},
 				});
 				messageApi.success("Product has been deleted");
-				setCategories(categories.filter((item) => 1));
+				setProducts(products.filter((item) => item._id !== id));
 			} catch (error) {
 				messageApi.error("Failed to delete product");
 				console.log(error);
