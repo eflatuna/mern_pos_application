@@ -6,7 +6,6 @@ import Products from "../components/products/Products";
 
 const HomePage = () => {
 	const [categories, setCategories] = useState([]);
-
 	useEffect(() => {
 		const getCategories = async () => {
 			try {

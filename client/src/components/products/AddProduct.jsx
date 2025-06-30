@@ -35,7 +35,6 @@ const AddProduct = ({
 	return (
 		<>
 			{contextHolder}
-
 			<Modal
 				title="Add New Product"
 				open={isAddModalOpen}
