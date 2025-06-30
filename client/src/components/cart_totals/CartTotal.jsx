@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import { Button, message } from "antd";
 import {
 	ClearOutlined,
 	MinusCircleOutlined,
@@ -13,12 +13,14 @@ import {
 	reset,
 } from "../../redux/cartSlice";
 
-const CartTotal = ({ messageApi }) => {
+const CartTotal = () => {
 	const cart = useSelector((state) => state.cart);
+	const [messageApi, contextHolder] = message.useMessage();
 	const dispatch = useDispatch();
 
 	return (
 		<>
+			{contextHolder}
 			<div className="cart h-full max-h-[calc(100vh-112px)] flex flex-col ">
 				<h2 className="bg-light-blue text-center py-4 text-white font-bold tracking-wide">
 					Items in Cart
@@ -36,9 +38,10 @@ const CartTotal = ({ messageApi }) => {
 										src={item.img}
 										alt={item.title}
 										className="w-16 h-16 object-cover cursor-pointer"
-										onClick={() =>
-											dispatch(deleteCart(item))
-										}
+										onClick={() => {
+											dispatch(deleteCart(item));
+											messageApi.success("Item deleted");
+										}}
 									/>
 									<div className="flex flex-col ml-2">
 										<b>{item.title}</b>
@@ -73,6 +76,9 @@ const CartTotal = ({ messageApi }) => {
 													)
 												) {
 													dispatch(deleteCart(item));
+													messageApi.success(
+														"Item deleted"
+													);
 												}
 											}
 											if (item.quantity > 1) {
@@ -128,6 +134,7 @@ const CartTotal = ({ messageApi }) => {
 						<Button
 							type="primary"
 							size="large"
+							disabled={cart.cartItems.length === 0}
 							className="w-full !bg-light-blue"
 						>
 							Place Order
@@ -137,6 +144,8 @@ const CartTotal = ({ messageApi }) => {
 							size="large"
 							className="w-full mt-2 flex items-center justify-center !bg-danger-dark"
 							icon={<ClearOutlined />}
+							danger
+							disabled={cart.cartItems.length === 0}
 							onClick={() => {
 								if (
 									window.confirm(
@@ -144,6 +153,7 @@ const CartTotal = ({ messageApi }) => {
 									)
 								) {
 									dispatch(reset());
+									messageApi.success("Cart cleared");
 								}
 							}}
 						>
