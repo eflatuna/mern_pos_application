@@ -18,6 +18,11 @@ const cartSlice = createSlice({
 				state.cartItems.push(action.payload);
 			}
 		},
+		deleteCart: (state, action) => {
+			const findCartItem = state.cartItems.find(
+				(item) => item._id === action.payload._id
+			);
+		},
 	},
 });
 export const { addProduct } = cartSlice.actions;
