@@ -70,7 +70,7 @@ const CartTotal = () => {
 						<span className="text-xl">120€</span>
 					</div>
 				</div>
-				<div className=" px-2">
+				<div className="pt-4 px-2">
 					<Button
 						type="primary"
 						size="large"
