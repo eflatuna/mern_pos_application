@@ -4,10 +4,19 @@ const cartSlice = createSlice({
 	name: "cart",
 	initialState: {
 		cartItems: [],
+		total: 0,
+		price: 0,
 	},
 	reducers: {
 		addProduct: (state, action) => {
-			state.cartItems.push(action.payload);
+			const findCartItem = state.cartItems.find(
+				(item) => item._id === action.payload._id
+			);
+			if (findCartItem) {
+				findCartItem.quantity = findCartItem.quantity + 1;
+			} else {
+				state.cartItems.push(action.payload);
+			}
 		},
 	},
 });

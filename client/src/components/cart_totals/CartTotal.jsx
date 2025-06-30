@@ -4,15 +4,10 @@ import {
 	MinusCircleOutlined,
 	PlusCircleOutlined,
 } from "@ant-design/icons";
+import { useSelector } from "react-redux";
 
-const cartData = [
-	{ id: 1, name: "Apple", price: 2, quantity: 2 },
-	{ id: 2, name: "Banana", price: 1.5, quantity: 1 },
-	{ id: 3, name: "Orange", price: 3, quantity: 3 },
-	{ id: 4, name: "Grapes", price: 4, quantity: 1 },
-	{ id: 5, name: "Mango", price: 2.5, quantity: 2 },
-];
 const CartTotal = () => {
+	const { cartItems } = useSelector((state) => state.cart);
 	return (
 		<div className="cart h-full max-h-[calc(100vh-112px)] flex flex-col p-5 ">
 			<h2 className="bg-light-blue text-center py-4 text-white font-bold tracking-wide">
@@ -20,19 +15,19 @@ const CartTotal = () => {
 			</h2>
 
 			<ul className="cart-items px-2 flex flex-col gap-y-3 py-2 overflow-y-auto">
-				{cartData.map((item) => (
+				{cartItems.map((item) => (
 					<li
 						key={item.id}
 						className="cart-item flex justify-between"
 					>
 						<div className="flex items-center">
 							<img
-								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZyyRD7OkXlJDE9hgjrKwZ30rwLqwOaJbMiQ&s"
-								alt={item.name}
+								src={item.img}
+								alt={item.title}
 								className="w-16 h-16 object-cover"
 							/>
 							<div className="flex flex-col ml-2">
-								<b>{item.name}</b>
+								<b>{item.title}</b>
 								<span>
 									{item.price}€ * {item.quantity}
 								</span>
