@@ -6,7 +6,11 @@ import {
 } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { deleteCart } from "../../redux/cartSlice";
+import {
+	deleteCart,
+	incrementQuantity,
+	decrementQuantity,
+} from "../../redux/cartSlice";
 
 const CartTotal = () => {
 	const cart = useSelector((state) => state.cart);
@@ -43,6 +47,9 @@ const CartTotal = () => {
 								size="small"
 								className="w-full flex items-center justify-center !rounded-full !bg-light-blue"
 								icon={<PlusCircleOutlined />}
+								onClick={() =>
+									dispatch(incrementQuantity(item))
+								}
 							/>
 							<span className="font-bold w-6 inline-block text-center">
 								{item.quantity}
@@ -52,6 +59,9 @@ const CartTotal = () => {
 								size="small"
 								className="w-full flex items-center justify-center !rounded-full !bg-danger-dark"
 								icon={<MinusCircleOutlined />}
+								onClick={() =>
+									dispatch(decrementQuantity(item))
+								}
 							/>
 						</div>
 					</li>
