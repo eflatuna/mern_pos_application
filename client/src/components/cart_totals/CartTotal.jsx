@@ -60,9 +60,20 @@ const CartTotal = () => {
 									size="small"
 									className="w-full flex items-center justify-center !rounded-full !bg-danger-dark"
 									icon={<MinusCircleOutlined />}
-									onClick={() =>
-										dispatch(decrementQuantity(item))
-									}
+									onClick={() => {
+										if (item.quantity === 1) {
+											if (
+												window.confirm(
+													"Are you sure you want to delete this item?"
+												)
+											) {
+												dispatch(deleteCart(item));
+											}
+										}
+										if (item.quantity > 1) {
+											dispatch(decrementQuantity(item));
+										}
+									}}
 								/>
 							</div>
 						</li>
