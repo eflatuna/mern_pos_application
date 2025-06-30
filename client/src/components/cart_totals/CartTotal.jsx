@@ -61,12 +61,19 @@ const CartTotal = () => {
 				<div className="border-t border-b">
 					<div className="flex justify-between p-2">
 						<b>Subtotal</b>
-						<span>{cart.total.toFixed(2)}</span>
+						<span>
+							{cart.total > 0 ? cart.total.toFixed(2) : 0}
+						</span>
 					</div>
 					<div className="flex justify-between p-2">
 						<b>Tax %{cart.tax} </b>
 						<span className="text-red-700">
-							+{((cart.total * cart.tax) / 100).toFixed(2)}€
+							{(cart.total * cart.tax) / 100 > 0
+								? `+${((cart.total * cart.tax) / 100).toFixed(
+										2
+								  )}`
+								: 0}
+							€
 						</span>
 					</div>
 				</div>
@@ -74,11 +81,13 @@ const CartTotal = () => {
 					<div className="flex justify-between p-2">
 						<b className="text-xl text-dark-green">Total</b>
 						<span className="text-xl">
-							{(
-								cart.total +
-								(cart.total * cart.tax) / 100
-							).toFixed(2)}
-							€
+							{cart.total + (cart.total * cart.tax) / 100 > 0
+								? (
+										cart.total +
+										(cart.total * cart.tax) / 100
+								  ).toFixed(2)
+								: 0}
+							₺
 						</span>
 					</div>
 				</div>
