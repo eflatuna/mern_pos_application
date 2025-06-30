@@ -10,6 +10,7 @@ import {
 	deleteCart,
 	incrementQuantity,
 	decrementQuantity,
+	reset,
 } from "../../redux/cartSlice";
 
 const CartTotal = () => {
@@ -129,6 +130,15 @@ const CartTotal = () => {
 						size="large"
 						className="w-full mt-2 flex items-center justify-center !bg-danger-dark"
 						icon={<ClearOutlined />}
+						onClick={() => {
+							if (
+								window.confirm(
+									"Are you sure you want to clear the cart?"
+								)
+							) {
+								dispatch(reset());
+							}
+						}}
 					>
 						Clear
 					</Button>
