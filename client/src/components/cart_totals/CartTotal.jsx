@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { deleteCart } from "../../redux/cartSlice";
 
 const CartTotal = () => {
-	const { cartItems } = useSelector((state) => state.cart);
+	const cart = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
 	return (
 		<div className="cart h-full max-h-[calc(100vh-112px)] flex flex-col ">
@@ -18,7 +18,7 @@ const CartTotal = () => {
 			</h2>
 
 			<ul className="cart-items px-2 flex flex-col gap-y-3 py-2 overflow-y-auto">
-				{cartItems.map((item) => (
+				{cart.cartItems.map((item) => (
 					<li
 						key={item.id}
 						className="cart-item flex justify-between"
@@ -61,17 +61,21 @@ const CartTotal = () => {
 				<div className="border-t border-b">
 					<div className="flex justify-between p-2">
 						<b>Subtotal</b>
-						<span>100€</span>
+						<span>{cart.total}</span>
 					</div>
 					<div className="flex justify-between p-2">
-						<b>Tax 20%</b>
-						<span className="text-red-700">+20€</span>
+						<b>Tax %{cart.tax} </b>
+						<span className="text-red-700">
+							+{(cart.total * cart.tax) / 100}€
+						</span>
 					</div>
 				</div>
 				<div className="border-b mt-4">
 					<div className="flex justify-between p-2">
 						<b className="text-xl text-dark-green">Total</b>
-						<span className="text-xl">120€</span>
+						<span className="text-xl">
+							{cart.total + (cart.total * cart.tax) / 100}€
+						</span>
 					</div>
 				</div>
 				<div className="pt-4 px-2">
