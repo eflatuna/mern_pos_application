@@ -8,6 +8,7 @@ const EditCategory = ({
 	setCategories,
 }) => {
 	const [editingRow, setEditingRow] = useState(null);
+	const [messageApi, contextHolder] = message.useMessage();
 	const onFinish = (values) => {
 		try {
 			fetch("http://localhost:5000/api/categories/update-category", {
@@ -20,7 +21,7 @@ const EditCategory = ({
 					"Content-Type": "application/json; charset=UTF-8",
 				},
 			});
-			message.success("Category has been updated");
+			messageApi.success("Category has been updated");
 			setCategories(
 				categories.map((item) => {
 					if (item._id === editingRow?._id) {
@@ -30,7 +31,7 @@ const EditCategory = ({
 				})
 			);
 		} catch (error) {
-			message.error("Failed to update category");
+			messageApi.error("Failed to update category");
 			console.log(error);
 		}
 	};
@@ -47,10 +48,10 @@ const EditCategory = ({
 						"Content-Type": "application/json; charset=UTF-8",
 					},
 				});
-				message.success("Category has been deleted");
+				messageApi.success("Category has been deleted");
 				setCategories(categories.filter((item) => item._id !== id));
 			} catch (error) {
-				message.error("Failed to delete category");
+				messageApi.error("Failed to delete category");
 				console.log(error);
 			}
 		}
@@ -106,21 +107,24 @@ const EditCategory = ({
 		},
 	];
 	return (
-		<Modal
-			open={isEditModalOpen}
-			title="Edit Category"
-			footer={false}
-			onCancel={() => setIsEditModalOpen(false)}
-		>
-			<Form onFinish={onFinish}>
-				<Table
-					bordered
-					dataSource={categories}
-					columns={columns}
-					rowKey={"_id"}
-				/>
-			</Form>
-		</Modal>
+		<>
+			{contextHolder}
+			<Modal
+				open={isEditModalOpen}
+				title="Edit Category"
+				footer={false}
+				onCancel={() => setIsEditModalOpen(false)}
+			>
+				<Form onFinish={onFinish}>
+					<Table
+						bordered
+						dataSource={categories}
+						columns={columns}
+						rowKey={"_id"}
+					/>
+				</Form>
+			</Modal>
+		</>
 	);
 };
 

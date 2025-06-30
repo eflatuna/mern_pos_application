@@ -7,6 +7,7 @@ const AddProduct = ({
 	products,
 	setProducts,
 }) => {
+	const [messageApi, contextHolder] = message.useMessage();
 	const onFinish = async (values) => {
 		// console.log(values);
 		try {
@@ -17,7 +18,7 @@ const AddProduct = ({
 					"Content-Type": "application/json; charset=UTF-8",
 				},
 			});
-			message.success("Category has been created");
+			messageApi.success("Category has been created");
 			form.resetFields();
 			setIsAddModalOpen(false);
 			setProducts([
@@ -26,85 +27,89 @@ const AddProduct = ({
 			]);
 		} catch (error) {
 			console.log(error);
-			message.error("Failed to create product. Please try again.");
+			messageApi.error("Failed to create product. Please try again.");
 		}
 	};
 	const [form] = Form.useForm();
 
 	return (
-		<Modal
-			title="Add New Product"
-			open={isAddModalOpen}
-			onCancel={() => setIsAddModalOpen(false)}
-			footer={false}
-		>
-			<Form layout="vertical" onFinish={onFinish} form={form}>
-				<Form.Item
-					name={"title"}
-					label="Add Product Name"
-					rules={[
-						{
-							required: true,
-							message: "Product name cannot be empty!",
-						},
-					]}
-				>
-					<Input placeholder="Please enter the product name" />
-				</Form.Item>
-				<Form.Item
-					name="img"
-					label="Product Image"
-					rules={[
-						{
-							required: true,
-							message: "Product img cannot be empty!",
-						},
-					]}
-				>
-					<Input placeholder="Please enter the product image" />
-				</Form.Item>
-				<Form.Item
-					name="price"
-					label="Product Price"
-					rules={[
-						{
-							required: true,
-							message: "Product price cannot be empty!",
-						},
-					]}
-				>
-					<Input placeholder="Please enter the product price" />
-				</Form.Item>
-				<Form.Item
-					name="category"
-					label="Category"
-					rules={[
-						{
-							required: true,
-							message: "Category cannot be empty!",
-						},
-					]}
-				>
-					<Select
-						placeholder="Search to Category"
-						optionFilterProp="title"
-						filterSort={(optionA, optionB) =>
-							(optionA?.title ?? "")
-								.toLowerCase()
-								.localeCompare(
-									(optionB?.title ?? "").toLowerCase()
-								)
-						}
-						options={categories}
-					/>
-				</Form.Item>
-				<Form.Item className="flex justify-end mb-0">
-					<Button type="primary" htmlType="submit">
-						Create
-					</Button>
-				</Form.Item>
-			</Form>
-		</Modal>
+		<>
+			{contextHolder}
+
+			<Modal
+				title="Add New Product"
+				open={isAddModalOpen}
+				onCancel={() => setIsAddModalOpen(false)}
+				footer={false}
+			>
+				<Form layout="vertical" onFinish={onFinish} form={form}>
+					<Form.Item
+						name={"title"}
+						label="Add Product Name"
+						rules={[
+							{
+								required: true,
+								message: "Product name cannot be empty!",
+							},
+						]}
+					>
+						<Input placeholder="Please enter the product name" />
+					</Form.Item>
+					<Form.Item
+						name="img"
+						label="Product Image"
+						rules={[
+							{
+								required: true,
+								message: "Product img cannot be empty!",
+							},
+						]}
+					>
+						<Input placeholder="Please enter the product image" />
+					</Form.Item>
+					<Form.Item
+						name="price"
+						label="Product Price"
+						rules={[
+							{
+								required: true,
+								message: "Product price cannot be empty!",
+							},
+						]}
+					>
+						<Input placeholder="Please enter the product price" />
+					</Form.Item>
+					<Form.Item
+						name="category"
+						label="Category"
+						rules={[
+							{
+								required: true,
+								message: "Category cannot be empty!",
+							},
+						]}
+					>
+						<Select
+							placeholder="Search to Category"
+							optionFilterProp="title"
+							filterSort={(optionA, optionB) =>
+								(optionA?.title ?? "")
+									.toLowerCase()
+									.localeCompare(
+										(optionB?.title ?? "").toLowerCase()
+									)
+							}
+							options={categories}
+						/>
+					</Form.Item>
+					<Form.Item className="flex justify-end mb-0">
+						<Button type="primary" htmlType="submit">
+							Create
+						</Button>
+					</Form.Item>
+				</Form>
+			</Modal>
+		</>
 	);
 };
 
