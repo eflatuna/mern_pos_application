@@ -19,7 +19,7 @@ const MenuItem = ({
 	return (
 		<Link
 			to={to}
-			className={`menu-link flex flex-col hover:text-[#40a9ff] transition-all ${responsiveClass}`}
+			className={`menu-link flex flex-col hover:text-[#40a9ff] transition-all gap-y-[2px] items-center ${responsiveClass}`}
 		>
 			{count ? (
 				<Badge count={cart.cartItems.length} offset={[0, -4]}>

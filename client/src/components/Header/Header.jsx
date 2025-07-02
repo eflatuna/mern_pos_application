@@ -10,6 +10,7 @@ import {
 } from "@ant-design/icons";
 import MenuItem from "./MenuItem.jsx";
 import { Link } from "react-router-dom";
+import "./index.css";
 
 const Header = () => {
 	return (
@@ -33,7 +34,7 @@ const Header = () => {
 						className="rounded-full w-full min-w-[150px] md:max-w-[800px]"
 					/>
 				</div>
-				<div className="menu-links flex justify-between items-center gap-7 fixed z-50 bottom-0 left-0 w-full bg-white md:static md:w-auto md:bg-transparent md:border-t-0 border-t md:px-0 px-4 py-1">
+				<div className="menu-links">
 					<MenuItem
 						to="/home"
 						icon={<HomeOutlined className="md:text-2xl text-xl" />}
