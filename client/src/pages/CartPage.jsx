@@ -1,40 +1,93 @@
-import { Button, Card, Table } from "antd";
+import { Button, Card, Table, message } from "antd";
 import Header from "../components/Header/Header";
 import { useState } from "react";
 import CreateInvoice from "../components/cart_totals/CreateInvoice";
+import { useSelector } from "react-redux";
+import { MinusCircleOutlined, PlusCircleOutlined } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+import {
+	incrementQuantity,
+	decrementQuantity,
+	deleteCart,
+} from "../redux/cartSlice";
 
 const CartPage = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const dataSource = [
-		{
-			key: "1",
-			name: "Mike",
-			age: 32,
-			address: "10 Downing Street",
-		},
-		{
-			key: "2",
-			name: "John",
-			age: 42,
-			address: "10 Downing Street",
-		},
-	];
+	const cart = useSelector((state) => state.cart);
+	const dispatch = useDispatch();
+	const [messageApi, contextHolder] = message.useMessage();
 
 	const columns = [
 		{
-			title: "Name",
-			dataIndex: "name",
-			key: "name",
+			title: "Product Image",
+			dataIndex: "img",
+			key: "img",
+			width: "125px",
+			render: (text) => {
+				return (
+					<img
+						src={text}
+						alt=""
+						className=" w-full h-20 object-cover"
+					/>
+				);
+			},
 		},
 		{
-			title: "Age",
-			dataIndex: "age",
-			key: "age",
+			title: "Product Name",
+			dataIndex: "category",
+			key: "category",
 		},
 		{
-			title: "Address",
-			dataIndex: "address",
-			key: "address",
+			title: "Product Price",
+			dataIndex: "price",
+			key: "price",
+			render: (text) => {
+				return <span>{text.toFixed(2)}€</span>;
+			},
+		},
+		{
+			title: "Product Quantity",
+			dataIndex: "quantity",
+			key: "quantity",
+			render: (text) => {
+				return (
+					<div className="flex items-center ">
+						{contextHolder}
+						<Button
+							type="primary"
+							size="small"
+							className="w-full flex items-center justify-center !rounded-full !bg-light-blue"
+							icon={<PlusCircleOutlined />}
+							onClick={() => dispatch(incrementQuantity(text))}
+						/>
+						<span className="font-bold w-6 inline-block text-center">
+							{text.quantity}
+						</span>
+						<Button
+							type="primary"
+							size="small"
+							className="w-full flex items-center justify-center !rounded-full !bg-danger-dark"
+							icon={<MinusCircleOutlined />}
+							onClick={() => {
+								if (text.quantity === 1) {
+									if (
+										window.confirm(
+											"Are you sure you want to delete this item?"
+										)
+									) {
+										dispatch(deleteCart(text));
+										messageApi.success("Item deleted");
+									}
+								}
+								if (text.quantity > 1) {
+									dispatch(decrementQuantity(text));
+								}
+							}}
+						/>
+					</div>
+				);
+			},
 		},
 	];
 
@@ -43,7 +96,7 @@ const CartPage = () => {
 			<Header />
 			<div className="px-6 ">
 				<Table
-					dataSource={dataSource}
+					dataSource={cart.cartItems}
 					columns={columns}
 					bordered
 					pagination={false}
