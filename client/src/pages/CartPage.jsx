@@ -134,15 +134,35 @@ const CartPage = () => {
 					<Card className="w-72">
 						<div className="flex justify-between">
 							<span>Subtotal</span>
-							<span>100€</span>
+							<span>
+								{" "}
+								{cart.total > 0 ? cart.total.toFixed(2) : 0}
+							</span>
 						</div>
 						<div className="flex justify-between my-2">
-							<span>VAT 20%</span>
-							<span className="text-dark-red">20€</span>
+							<span>Tax %{cart.tax}</span>
+							<span className="text-dark-red">
+								{" "}
+								{(cart.total * cart.tax) / 100 > 0
+									? `+${(
+											(cart.total * cart.tax) /
+											100
+									  ).toFixed(2)}`
+									: 0}
+								€
+							</span>
 						</div>
 						<div className="flex justify-between">
 							<b>Total</b>
-							<b>120€</b>
+							<b>
+								{cart.total + (cart.total * cart.tax) / 100 > 0
+									? (
+											cart.total +
+											(cart.total * cart.tax) / 100
+									  ).toFixed(2)
+									: 0}
+								₺
+							</b>
 						</div>
 						<Button
 							className="mt-4 w-full !bg-light-blue"
