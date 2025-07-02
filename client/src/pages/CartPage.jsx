@@ -1,4 +1,4 @@
-import { Button, Card, Table, message } from "antd";
+import { Button, Card, Popconfirm, Table, message } from "antd";
 import Header from "../components/Header/Header";
 import { useState } from "react";
 import CreateInvoice from "../components/cart_totals/CreateInvoice";
@@ -50,7 +50,7 @@ const CartPage = () => {
 			title: "Product Quantity",
 			dataIndex: "quantity",
 			key: "quantity",
-			render: (text) => {
+			render: (text, record) => {
 				return (
 					<div className="flex items-center ">
 						{contextHolder}
@@ -59,10 +59,10 @@ const CartPage = () => {
 							size="small"
 							className="w-full flex items-center justify-center !rounded-full !bg-light-blue"
 							icon={<PlusCircleOutlined />}
-							onClick={() => dispatch(incrementQuantity(text))}
+							onClick={() => dispatch(incrementQuantity(record))}
 						/>
 						<span className="font-bold w-6 inline-block text-center">
-							{text.quantity}
+							{record.quantity}
 						</span>
 						<Button
 							type="primary"
@@ -70,22 +70,51 @@ const CartPage = () => {
 							className="w-full flex items-center justify-center !rounded-full !bg-danger-dark"
 							icon={<MinusCircleOutlined />}
 							onClick={() => {
-								if (text.quantity === 1) {
+								if (record.quantity === 1) {
 									if (
 										window.confirm(
 											"Are you sure you want to delete this item?"
 										)
 									) {
-										dispatch(deleteCart(text));
+										dispatch(deleteCart(record));
 										messageApi.success("Item deleted");
 									}
 								}
-								if (text.quantity > 1) {
-									dispatch(decrementQuantity(text));
+								if (record.quantity > 1) {
+									dispatch(decrementQuantity(record));
 								}
 							}}
 						/>
 					</div>
+				);
+			},
+		},
+		{
+			title: "Total Price",
+			render: (text, record) => {
+				return (
+					<span>{(record.quantity * record.price).toFixed(2)}€</span>
+				);
+			},
+		},
+		{
+			title: "Actions",
+
+			render: (_, record) => {
+				return (
+					<Popconfirm
+						title="Are you sure?"
+						onConfirm={() => {
+							dispatch(deleteCart(record));
+							messageApi.success("Item deleted");
+						}}
+						okText="Yes"
+						cancelText="No"
+					>
+						<Button type="link" danger>
+							Clear
+						</Button>
+					</Popconfirm>
 				);
 			},
 		},
