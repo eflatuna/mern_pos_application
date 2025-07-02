@@ -1,7 +1,9 @@
 import { Button, Form, Input, Modal, Select, Card } from "antd";
 import React from "react";
+import { useSelector } from "react-redux";
 
 const CreateInvoice = ({ setIsModalOpen, isModalOpen }) => {
+	const cart = useSelector((state) => state.cart);
 	const onFinish = (values) => {
 		console.log("Success:", values);
 	};
@@ -69,15 +71,34 @@ const CreateInvoice = ({ setIsModalOpen, isModalOpen }) => {
 				<Card>
 					<div className="flex justify-between">
 						<span>Subtotal</span>
-						<span>100€</span>
+						<span>
+							{" "}
+							{cart.total > 0 ? cart.total.toFixed(2) : 0}
+						</span>
 					</div>
 					<div className="flex justify-between my-2">
-						<span>Tax 20%</span>
-						<span className="text-dark-red">20€</span>
+						<span>Tax %{cart.tax}</span>
+						<span className="text-dark-red">
+							{" "}
+							{(cart.total * cart.tax) / 100 > 0
+								? `+${((cart.total * cart.tax) / 100).toFixed(
+										2
+								  )}`
+								: 0}
+							€
+						</span>
 					</div>
 					<div className="flex justify-between">
 						<b>Total</b>
-						<b>120€</b>
+						<b>
+							{cart.total + (cart.total * cart.tax) / 100 > 0
+								? (
+										cart.total +
+										(cart.total * cart.tax) / 100
+								  ).toFixed(2)
+								: 0}
+							₺
+						</b>
 					</div>
 					<div className="flex justify-end">
 						<Button
