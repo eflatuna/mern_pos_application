@@ -5,7 +5,25 @@ import { useSelector } from "react-redux";
 const CreateInvoice = ({ setIsModalOpen, isModalOpen }) => {
 	const cart = useSelector((state) => state.cart);
 	const onFinish = (values) => {
-		console.log("Success:", values);
+		try {
+			fetch("http://localhost:5000/api/invoices/add-invoice", {
+				method: "POST",
+				body: JSON.stringify({
+					...values,
+					subTotal: cart.total,
+					tax: cart.tax,
+					totalAmount: (
+						cart.total +
+						(cart.total * cart.tax) / 100
+					).toFixed(2),
+				}),
+				headers: {
+					"Content-Type": "application/json;charset=UTF-8",
+				},
+			});
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const closeModal = () => setIsModalOpen(false);

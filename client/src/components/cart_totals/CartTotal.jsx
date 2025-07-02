@@ -4,19 +4,21 @@ import {
 	MinusCircleOutlined,
 	PlusCircleOutlined,
 } from "@ant-design/icons";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
 import {
 	deleteCart,
 	incrementQuantity,
 	decrementQuantity,
 	reset,
 } from "../../redux/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 const CartTotal = () => {
 	const cart = useSelector((state) => state.cart);
 	const [messageApi, contextHolder] = message.useMessage();
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	return (
 		<>
@@ -136,6 +138,7 @@ const CartTotal = () => {
 							size="large"
 							disabled={cart.cartItems.length === 0}
 							className="w-full !bg-light-blue"
+							onClick={() => navigate("/cart")}
 						>
 							Place Order
 						</Button>
