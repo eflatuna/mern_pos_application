@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get("/get-all", async (req, res) => {
 	try {
-		const invoices = await invoice.find();
+		const invoices = await Invoice.find();
 		res.status(200).json(invoices);
 	} catch (error) {
 		res.status(500).json(error);
