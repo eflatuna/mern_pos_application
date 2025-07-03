@@ -128,6 +128,7 @@ const CartPage = () => {
 					columns={columns}
 					bordered
 					pagination={false}
+					scroll={{ x: 1200, y: 300 }}
 				/>
 				<div className="cart-total flex justify-end mt-4">
 					<Card className="w-72">
