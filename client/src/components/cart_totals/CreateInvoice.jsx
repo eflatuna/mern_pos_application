@@ -1,9 +1,13 @@
 import { Button, Form, Input, Modal, Select, Card, message } from "antd";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { reset } from "../../redux/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 const CreateInvoice = ({ setIsModalOpen, isModalOpen }) => {
 	const cart = useSelector((state) => state.cart);
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const [messageApi, contextHolder] = message.useMessage();
 	const onFinish = async (values) => {
 		const payload = {
@@ -29,6 +33,8 @@ const CreateInvoice = ({ setIsModalOpen, isModalOpen }) => {
 			);
 			if (res.status === 200) {
 				messageApi.success("Invoice has been created");
+				dispatch(reset());
+				navigate("/invoices");
 			}
 		} catch (error) {
 			messageApi.error("Error creating invoice");

@@ -2,9 +2,8 @@ import { Button, Card, Popconfirm, Table, message } from "antd";
 import Header from "../components/Header/Header";
 import { useState } from "react";
 import CreateInvoice from "../components/cart_totals/CreateInvoice";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { MinusCircleOutlined, PlusCircleOutlined } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
 import {
 	incrementQuantity,
 	decrementQuantity,
