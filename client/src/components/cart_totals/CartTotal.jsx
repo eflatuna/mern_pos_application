@@ -30,69 +30,77 @@ const CartTotal = () => {
 
 				<ul className="cart-items px-2 flex flex-col gap-y-3 py-2 overflow-y-auto">
 					{cart.cartItems.length > 0 ? (
-						cart.cartItems.map((item) => (
-							<li
-								key={item.id}
-								className="cart-item flex justify-between"
-							>
-								<div className="flex items-center">
-									<img
-										src={item.img}
-										alt={item.title}
-										className="w-16 h-16 object-cover cursor-pointer"
-										onClick={() => {
-											dispatch(deleteCart(item));
-											messageApi.success("Item deleted");
-										}}
-									/>
-									<div className="flex flex-col ml-2">
-										<b>{item.title}</b>
-										<span>
-											{item.price}€ * {item.quantity}
-										</span>
+						cart.cartItems
+							.map((item) => (
+								<li
+									key={item.id}
+									className="cart-item flex justify-between"
+								>
+									<div className="flex items-center">
+										<img
+											src={item.img}
+											alt={item.title}
+											className="w-16 h-16 object-cover cursor-pointer"
+											onClick={() => {
+												dispatch(deleteCart(item));
+												messageApi.success(
+													"Item deleted"
+												);
+											}}
+										/>
+										<div className="flex flex-col ml-2">
+											<b>{item.title}</b>
+											<span>
+												{item.price}€ * {item.quantity}
+											</span>
+										</div>
 									</div>
-								</div>
-								<div className="flex items-center ">
-									<Button
-										type="primary"
-										size="small"
-										className="w-full flex items-center justify-center !rounded-full !bg-light-blue"
-										icon={<PlusCircleOutlined />}
-										onClick={() =>
-											dispatch(incrementQuantity(item))
-										}
-									/>
-									<span className="font-bold w-6 inline-block text-center">
-										{item.quantity}
-									</span>
-									<Button
-										type="primary"
-										size="small"
-										className="w-full flex items-center justify-center !rounded-full !bg-danger-dark"
-										icon={<MinusCircleOutlined />}
-										onClick={() => {
-											if (item.quantity === 1) {
-												if (
-													window.confirm(
-														"Are you sure you want to delete this item?"
-													)
-												) {
-													dispatch(deleteCart(item));
-													messageApi.success(
-														"Item deleted"
+									<div className="flex items-center ">
+										<Button
+											type="primary"
+											size="small"
+											className="w-full flex items-center justify-center !rounded-full !bg-light-blue"
+											icon={<PlusCircleOutlined />}
+											onClick={() =>
+												dispatch(
+													incrementQuantity(item)
+												)
+											}
+										/>
+										<span className="font-bold w-6 inline-block text-center">
+											{item.quantity}
+										</span>
+										<Button
+											type="primary"
+											size="small"
+											className="w-full flex items-center justify-center !rounded-full !bg-danger-dark"
+											icon={<MinusCircleOutlined />}
+											onClick={() => {
+												if (item.quantity === 1) {
+													if (
+														window.confirm(
+															"Are you sure you want to delete this item?"
+														)
+													) {
+														dispatch(
+															deleteCart(item)
+														);
+														messageApi.success(
+															"Item deleted"
+														);
+													}
+												}
+												if (item.quantity > 1) {
+													dispatch(
+														decrementQuantity(item)
 													);
 												}
-											}
-											if (item.quantity > 1) {
-												dispatch(
-													decrementQuantity(item)
-												);
-											}
-										}}
-									/>
-								</div>
-							</li>
-						))
+											}}
+										/>
+									</div>
+								</li>
+							))
+							.reverse()
 					) : (
 						<p className="text-center mt-4">No items in cart</p>
 					)}
