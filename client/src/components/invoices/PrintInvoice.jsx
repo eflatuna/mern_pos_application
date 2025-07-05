@@ -1,309 +1,7 @@
-// import { Button, Modal } from "antd";
-
-// const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
-// 	const closeModal = () => setIsModalOpen(false);
-
-// 	return (
-// 		<Modal
-// 			title="Print Invoice"
-// 			open={isModalOpen}
-// 			footer={false}
-// 			onCancel={closeModal}
-// 			width={800}
-// 		>
-// 			<section className="py-20 bg-black">
-// 				<div className="max-w-4xl bg-white px-6">
-// 					<article className="overflow-hidden">
-// 						<div className="logo my-6">
-// 							<h2 className="text-4xl font-bold text-slate-700">
-// 								LOGO
-// 							</h2>
-// 							<div className="invoice-details">
-// 								<div className="grid sm:grid-cols-4 grid-cols-3 gap-12">
-// 									<div className="text-md text-slate-500">
-// 										<p className="font-bold text-slate-700">
-// 											Invoice Details
-// 										</p>
-// 										<p> Unwrapped </p>
-// 										<p>Fake Street 123</p>
-// 										<p>San Javier</p>
-// 										<p>CA 12345</p>
-// 									</div>
-// 									<div className="text-md text-slate-500">
-// 										<p className="font-bold text-slate-700">
-// 											Invoice
-// 										</p>
-// 										<p> The Boring Company</p>
-// 										<p>Tesla Street 123</p>
-// 										<p>Frisco</p>
-// 										<p>CA 1200</p>
-// 									</div>
-// 									<div className="text-md text-slate-500">
-// 										<p className="font-bold text-slate-700">
-// 											Invoice Nummer
-// 										</p>
-// 										<p>00041</p>
-// 										<p className="font-bold text-slate-700 mt-2">
-// 											Date of Issue
-// 										</p>
-// 										<p>2022-01-01</p>
-// 									</div>
-// 									<div className="text-md text-slate-500 sm:block hidden">
-// 										<p className="font-bold text-slate-700">
-// 											Terms:
-// 										</p>
-// 										<p>10 Days</p>
-// 										<p className="font-bold text-slate-700 mt-2">
-// 											Due
-// 										</p>
-// 										<p>22.01.2022</p>
-// 									</div>
-// 								</div>
-// 							</div>
-// 						</div>
-// 						<div className="invoice-table-area mt-8">
-// 							<table className="min-w-full divide-y divide-slate-500 overflow-hidden">
-// 								<thead>
-// 									<tr>
-// 										<th
-// 											scope="col"
-// 											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 md:pl-0 sm:table-cell hidden"
-// 										>
-// 											Image
-// 										</th>
-// 										<th
-// 											scope="col"
-// 											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 md:pl-0 sm:table-cell hidden "
-// 										>
-// 											Title
-// 										</th>
-// 										<th
-// 											scope="col"
-// 											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 md:pl-0 sm:hidden"
-// 											colSpan={4}
-// 										>
-// 											Title
-// 										</th>
-// 										<th
-// 											scope="col"
-// 											className="py-3.5 pt-4 text-center font-normal text-sm text-slate-700 md:pl-0 sm:table-cell hidden"
-// 										>
-// 											Price
-// 										</th>
-// 										<th
-// 											scope="col"
-// 											className="py-3.5 pt-4 text-right font-normal text-sm text-slate-700 md:pl-0 sm:table-cell hidden"
-// 										>
-// 											Quantity
-// 										</th>
-// 										<th
-// 											scope="col"
-// 											className="py-3.5 pt-4 font-normal text-sm text-slate-700 md:pl-0 text-end"
-// 										>
-// 											Total
-// 										</th>
-// 									</tr>
-// 								</thead>
-// 								<tbody>
-// 									<tr className="border-b border-t border-slate-200">
-// 										<td className="py-4 sm:table-cell hidden">
-// 											<img
-// 												src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZyyRD7OkXlJDE9hgjrKwZ30rwLqwOaJbMiQ&s"
-// 												className="w-12 h-12 object-cover"
-// 												alt="Product"
-// 											/>
-// 										</td>
-// 										<td className="py-4 sm:table-cell hidden">
-// 											<div className="flex flex-col">
-// 												<span className="font-medium ">
-// 													Apple
-// 												</span>
-// 												<span className="sm:hidden inline-block text-xs">
-// 													1 unit at 2€
-// 												</span>
-// 											</div>
-// 										</td>
-// 										<td
-// 											className="py-4 sm:hidden text-left"
-// 											colSpan={4}
-// 										>
-// 											<div className="flex flex-col">
-// 												<span className="font-medium ">
-// 													Apple
-// 												</span>
-// 												<span className="sm:hidden inline-block text-xs">
-// 													1 unit at 2€
-// 												</span>
-// 											</div>
-// 										</td>
-// 										<td className="py-4 text-center sm:table-cell hidden">
-// 											<span>2€</span>
-// 										</td>
-// 										<td className="py-4 text-right sm:table-cell hidden">
-// 											<span>50</span>
-// 										</td>
-// 										<td className="py-4 text-end ">
-// 											<span>100€</span>
-// 										</td>
-// 									</tr>
-// 								</tbody>
-// 								<tfoot>
-// 									<tr>
-// 										<th
-// 											className="text-right pt-4 sm:table-cell hidden"
-// 											colSpan={4}
-// 											scope="row"
-// 										>
-// 											<span className="font-normal text-slate-700">
-// 												Subtotal
-// 											</span>
-// 										</th>
-// 										<th
-// 											className="text-left pt-4 sm:hidden"
-// 											scope="row"
-// 											colSpan={4}
-// 										>
-// 											<p className="font-normal text-slate-700">
-// 												Subtotal
-// 											</p>
-// 										</th>
-// 										<th
-// 											className="text-right pt-4"
-// 											scope="row"
-// 										>
-// 											100€
-// 										</th>
-// 									</tr>
-// 									<tr>
-// 										<th
-// 											className="text-right pt-4 sm:table-cell hidden"
-// 											colSpan={4}
-// 											scope="row"
-// 										>
-// 											<span className="font-normal text-slate-700">
-// 												Tax
-// 											</span>
-// 										</th>
-// 										<th
-// 											className="text-left pt-4 sm:hidden"
-// 											colSpan={4}
-// 											scope="row"
-// 										>
-// 											<span className="font-normal text-slate-700">
-// 												Tax
-// 											</span>
-// 										</th>
-// 										<th
-// 											className="text-right pt-4 text-dark-red"
-// 											scope="row"
-// 										>
-// 											+20€
-// 										</th>
-// 									</tr>
-// 									<tr>
-// 										<th
-// 											className="text-right pt-4 sm:table-cell hidden"
-// 											colSpan={4}
-// 											scope="row"
-// 										>
-// 											<span className="font-normal text-slate-700">
-// 												Total
-// 											</span>
-// 										</th>
-// 										<th
-// 											className="text-left pt-4 sm:hidden"
-// 											colSpan={4}
-// 											scope="row"
-// 										>
-// 											<span className="font-normal text-slate-700">
-// 												Total
-// 											</span>
-// 										</th>
-// 										<th
-// 											className="text-right pt-4"
-// 											scope="row"
-// 										>
-// 											120€
-// 										</th>
-// 									</tr>
-// 								</tfoot>
-// 							</table>
-// 							<div className="py-9">
-// 								<div className="border-t pt-9 text-slate-700">
-// 									<p className="text-sm font-light text-slate-700">
-// 										We accept payments via credit card, bank
-// 										transfer, and cash where applicable. All
-// 										product prices are listed in EUR (€) and
-// 										include VAT unless otherwise stated.
-// 										Full payment must be received before we
-// 										can process and ship your order. For
-// 										bank transfers, please ensure that you
-// 										include your order number in the payment
-// 										reference to avoid delays. Invoices are
-// 										issued automatically once the payment is
-// 										confirmed. In case of late or incomplete
-// 										payments, your order may be delayed or
-// 										cancelled without prior notice. If you
-// 										require a different payment arrangement
-// 										or have any questions regarding our
-// 										payment process, feel free to contact
-// 										our customer support team.
-// 									</p>
-// 								</div>
-// 							</div>
-// 						</div>
-// 					</article>
-// 				</div>
-// 			</section>
-// 			<div className="flex justify-end mt-4">
-// 				<Button type="primary" size="large">
-// 					Print
-// 				</Button>
-// 			</div>
-// 		</Modal>
-// 	);
-// };
-
-// export default PrintInvoice;
 import { Button, Modal } from "antd";
-import InvoiceDetails from "./InvoiceDetails";
-import TableRow from "./TableRow";
 
-const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
+const PrintInvoice = ({ setIsModalOpen, isModalOpen, customer }) => {
 	const closeModal = () => setIsModalOpen(false);
-
-	const invoiceItems = [
-		{
-			title: "Apple",
-			img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZyyRD7OkXlJDE9hgjrKwZ30rwLqwOaJbMiQ&s",
-			price: 2,
-			quantity: 50,
-			total: 100,
-		},
-	];
-	const invoiceDetails = [
-		{
-			title: "Invoice Details",
-			lines: ["Unwrapped", "Fake Street 123", "San Javier", "CA 12345"],
-		},
-		{
-			title: "Invoice",
-			lines: [
-				"The Boring Company",
-				"Tesla Street 123",
-				"Frisco",
-				"CA 1200",
-			],
-		},
-		{
-			title: "Invoice Nummer",
-			lines: ["00041", "Date of Issue", "2022-01-01"],
-		},
-		{
-			title: "Terms:",
-			lines: ["10 Days", "Due", "22.01.2022"],
-		},
-	];
 
 	return (
 		<Modal
@@ -320,79 +18,271 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 							<h2 className="text-4xl font-bold text-slate-700">
 								LOGO
 							</h2>
-							<InvoiceDetails details={invoiceDetails} />
+							<div className="invoice-details">
+								<div className="grid sm:grid-cols-4 grid-cols-3 gap-12">
+									<div className="text-md text-slate-500">
+										<p className="font-bold text-slate-700">
+											Invoice Details
+										</p>
+										<p> Unwrapped </p>
+										<p>Fake Street 123</p>
+										<p>San Javier</p>
+										<p>CA 12345</p>
+									</div>
+									<div className="text-md text-slate-500">
+										<p className="font-bold text-slate-700">
+											Invoice
+										</p>
+										<p> The Boring Company</p>
+										<p>Tesla Street 123</p>
+										<p>Frisco</p>
+										<p>CA 1200</p>
+									</div>
+									<div className="text-md text-slate-500">
+										<p className="font-bold text-slate-700">
+											Invoice Nummer:
+										</p>
+										<p>
+											000
+											{Math.floor(Math.random() * 100)}
+										</p>
+										<p className="font-bold text-slate-700 mt-2">
+											Date of Issue
+										</p>
+										<p>
+											{customer?.createdAt?.substring(
+												0,
+												10
+											) || ""}
+										</p>
+									</div>
+									<div className="text-md text-slate-500 sm:block hidden">
+										<p className="font-bold text-slate-700">
+											Terms:
+										</p>
+										<p>10 Days</p>
+										<p className="font-bold text-slate-700 mt-2">
+											Due
+										</p>
+										<p>22.01.2022</p>
+									</div>
+								</div>
+							</div>
 						</div>
-
-						<table className="w-full divide-y divide-slate-500 mt-8">
-							<thead>
-								<tr>
-									<th className="sm:table-cell hidden text-left">
-										Image
-									</th>
-									<th className="sm:table-cell hidden text-left">
-										Title
-									</th>
-									<th
-										className="sm:hidden text-left"
-										colSpan={4}
-									>
-										Title
-									</th>
-									<th className="sm:table-cell hidden text-center">
-										Price
-									</th>
-									<th className="sm:table-cell hidden text-right">
-										Quantity
-									</th>
-									<th className="text-end">Total</th>
-								</tr>
-							</thead>
-							<tbody>
-								{invoiceItems.map((item, i) => (
-									<TableRow key={i} item={item} />
-								))}
-							</tbody>
-							<tfoot>
-								{[
-									{ label: "Subtotal", value: "100€" },
-									{ label: "Tax", value: "+20€" },
-									{ label: "Total", value: "120€" },
-								].map((row, i) => (
-									<tr key={i}>
+						<div className="invoice-table-area mt-8">
+							<table className="min-w-full divide-y divide-slate-500 overflow-hidden">
+								<thead>
+									<tr>
 										<th
-											colSpan={4}
-											className="pt-4 sm:table-cell hidden text-right"
+											scope="col"
+											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 md:pl-0 sm:table-cell hidden"
 										>
-											{row.label}
+											Image
 										</th>
 										<th
-											colSpan={4}
-											className="pt-4 sm:hidden text-left"
+											scope="col"
+											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 md:pl-0 sm:table-cell hidden "
 										>
-											{row.label}
+											Title
 										</th>
-										<th className="pt-4 text-right">
-											{row.value}
+										<th
+											scope="col"
+											className="py-3.5 pt-4 text-left font-normal text-sm text-slate-700 md:pl-0 sm:hidden"
+											colSpan={4}
+										>
+											Title
+										</th>
+										<th
+											scope="col"
+											className="py-3.5 pt-4 text-center font-normal text-sm text-slate-700 md:pl-0 sm:table-cell hidden"
+										>
+											Price
+										</th>
+										<th
+											scope="col"
+											className="py-3.5 pt-4 text-right font-normal text-sm text-slate-700 md:pl-0 sm:table-cell hidden"
+										>
+											Quantity
+										</th>
+										<th
+											scope="col"
+											className="py-3.5 pt-4 font-normal text-sm text-slate-700 md:pl-0 text-end"
+										>
+											Total
 										</th>
 									</tr>
-								))}
-							</tfoot>
-						</table>
-
-						<div className="py-9 border-t pt-9 text-sm text-slate-700">
-							We accept payments via credit card, bank transfer,
-							and cash where applicable. [...]
+								</thead>
+								<tbody>
+									{customer?.cartItems?.map((item, i) => {
+										return (
+											<tr
+												key={i}
+												className="border-b border-t border-slate-200"
+											>
+												<td className="py-4 sm:table-cell hidden">
+													<img
+														src={item.img}
+														className="w-12 h-12 object-cover"
+														alt="Product"
+													/>
+												</td>
+												<td className="py-4 sm:table-cell hidden">
+													<div className="flex flex-col">
+														<span className="font-medium ">
+															{item.title}
+														</span>
+														<span className="sm:hidden inline-block text-xs">
+															{item.price}€
+														</span>
+													</div>
+												</td>
+												<td
+													className="py-4 sm:hidden text-left"
+													colSpan={4}
+												>
+													<div className="flex flex-col">
+														<span className="font-medium ">
+															{item.title}
+														</span>
+														<span className="sm:hidden inline-block text-xs">
+															{item.price}€
+														</span>
+													</div>
+												</td>
+												<td className="py-4 text-center sm:table-cell hidden">
+													<span>
+														{Number(
+															item.price
+														).toFixed(2)}
+														€
+													</span>
+												</td>
+												<td className="py-4 text-right sm:table-cell hidden">
+													<span>{item.quantity}</span>
+												</td>
+												<td className="py-4 text-end ">
+													<span>
+														{(
+															item.price *
+															item.quantity
+														).toFixed(2)}
+														€
+													</span>
+												</td>
+											</tr>
+										);
+									})}
+								</tbody>
+								<tfoot>
+									<tr>
+										<th
+											className="text-right pt-4 sm:table-cell hidden"
+											colSpan={4}
+											scope="row"
+										>
+											<span className="font-normal text-slate-700">
+												Subtotal
+											</span>
+										</th>
+										<th
+											className="text-left pt-4 sm:hidden"
+											scope="row"
+											colSpan={4}
+										>
+											<p className="font-normal text-slate-700">
+												Subtotal
+											</p>
+										</th>
+										<th
+											className="text-right pt-4"
+											scope="row"
+										>
+											{customer?.subTotal}€
+										</th>
+									</tr>
+									<tr>
+										<th
+											className="text-right pt-4 sm:table-cell hidden"
+											colSpan={4}
+											scope="row"
+										>
+											<span className="font-normal text-slate-700">
+												Tax
+											</span>
+										</th>
+										<th
+											className="text-left pt-4 sm:hidden"
+											colSpan={4}
+											scope="row"
+										>
+											<span className="font-normal text-slate-700">
+												Tax
+											</span>
+										</th>
+										<th
+											className="text-right pt-4 text-dark-red"
+											scope="row"
+										>
+											+{customer?.tax}€
+										</th>
+									</tr>
+									<tr>
+										<th
+											className="text-right pt-4 sm:table-cell hidden"
+											colSpan={4}
+											scope="row"
+										>
+											<span className="font-normal text-slate-700">
+												Total
+											</span>
+										</th>
+										<th
+											className="text-left pt-4 sm:hidden"
+											colSpan={4}
+											scope="row"
+										>
+											<span className="font-normal text-slate-700">
+												Total
+											</span>
+										</th>
+										<th
+											className="text-right pt-4"
+											scope="row"
+										>
+											{customer?.totalAmount}€
+										</th>
+									</tr>
+								</tfoot>
+							</table>
+							<div className="py-9">
+								<div className="border-t pt-9 text-slate-700">
+									<p className="text-sm font-light text-slate-700">
+										We accept payments via credit card, bank
+										transfer, and cash where applicable. All
+										product prices are listed in EUR (€) and
+										include VAT unless otherwise stated.
+										Full payment must be received before we
+										can process and ship your order. For
+										bank transfers, please ensure that you
+										include your order number in the payment
+										reference to avoid delays. Invoices are
+										issued automatically once the payment is
+										confirmed. In case of late or incomplete
+										payments, your order may be delayed or
+										cancelled without prior notice. If you
+										require a different payment arrangement
+										or have any questions regarding our
+										payment process, feel free to contact
+										our customer support team.
+									</p>
+								</div>
+							</div>
 						</div>
 					</article>
 				</div>
 			</section>
-
 			<div className="flex justify-end mt-4">
-				<Button
-					type="primary"
-					size="large"
-					onClick={() => window.print()}
-				>
+				<Button type="primary" size="large">
 					Print
 				</Button>
 			</div>
@@ -401,3 +291,139 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen }) => {
 };
 
 export default PrintInvoice;
+// import { Button, Modal } from "antd";
+// import InvoiceDetails from "./InvoiceDetails";
+// import TableRow from "./TableRow";
+
+// const PrintInvoice = ({ setIsModalOpen, isModalOpen, customer }) => {
+// 	const closeModal = () => setIsModalOpen(false);
+
+// 	const invoiceItems = [
+// 		{
+// 			title: "Apple",
+// 			img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZyyRD7OkXlJDE9hgjrKwZ30rwLqwOaJbMiQ&s",
+// 			price: 2,
+// 			quantity: 50,
+// 			total: 100,
+// 		},
+// 	];
+// 	const invoiceDetails = [
+// 		{
+// 			title: "Invoice Details",
+// 			lines: ["Unwrapped", "Fake Street 123", "San Javier", "CA 12345"],
+// 		},
+// 		{
+// 			title: "Invoice",
+// 			lines: [
+// 				"The Boring Company",
+// 				"Tesla Street 123",
+// 				"Frisco",
+// 				"CA 1200",
+// 			],
+// 		},
+// 		{
+// 			title: "Invoice Nummer",
+// 			lines: ["00041", "Date of Issue", "2022-01-01"],
+// 		},
+// 		{
+// 			title: "Terms:",
+// 			lines: ["10 Days", "Due", "22.01.2022"],
+// 		},
+// 	];
+
+// 	return (
+// 		<Modal
+// 			title="Print Invoice"
+// 			open={isModalOpen}
+// 			footer={false}
+// 			onCancel={closeModal}
+// 			width={800}
+// 		>
+// 			<section className="py-20 bg-black">
+// 				<div className="max-w-4xl bg-white px-6">
+// 					<article className="overflow-hidden">
+// 						<div className="logo my-6">
+// 							<h2 className="text-4xl font-bold text-slate-700">
+// 								LOGO
+// 							</h2>
+// 							<InvoiceDetails details={invoiceDetails} />
+// 						</div>
+
+// 						<table className="w-full divide-y divide-slate-500 mt-8">
+// 							<thead>
+// 								<tr>
+// 									<th className="sm:table-cell hidden text-left">
+// 										Image
+// 									</th>
+// 									<th className="sm:table-cell hidden text-left">
+// 										Title
+// 									</th>
+// 									<th
+// 										className="sm:hidden text-left"
+// 										colSpan={4}
+// 									>
+// 										Title
+// 									</th>
+// 									<th className="sm:table-cell hidden text-center">
+// 										Price
+// 									</th>
+// 									<th className="sm:table-cell hidden text-right">
+// 										Quantity
+// 									</th>
+// 									<th className="text-end">Total</th>
+// 								</tr>
+// 							</thead>
+// 							<tbody>
+// 								{invoiceItems.map((item, i) => (
+// 									<TableRow key={i} item={item} />
+// 								))}
+// 							</tbody>
+// 							<tfoot>
+// 								{[
+// 									{ label: "Subtotal", value: "100€" },
+// 									{ label: "Tax", value: "+20€" },
+// 									{ label: "Total", value: "120€" },
+// 								].map((row, i) => (
+// 									<tr key={i}>
+// 										<th
+// 											colSpan={4}
+// 											className="pt-4 sm:table-cell hidden text-right"
+// 										>
+// 											{row.label}
+// 										</th>
+// 										<th
+// 											colSpan={4}
+// 											className="pt-4 sm:hidden text-left"
+// 										>
+// 											{row.label}
+// 										</th>
+// 										<th className="pt-4 text-right">
+// 											{row.value}
+// 										</th>
+// 									</tr>
+// 								))}
+// 							</tfoot>
+// 						</table>
+
+// 						<div className="py-9 border-t pt-9 text-sm text-slate-700">
+// 							We accept payments via credit card, bank transfer,
+// 							and cash where applicable. [...]
+// 						</div>
+// 					</article>
+// 				</div>
+// 			</section>
+
+// 			<div className="flex justify-end mt-4">
+// 				<Button
+// 					type="primary"
+// 					size="large"
+// 					onClick={() => window.print()}
+// 				>
+// 					Print
+// 				</Button>
+// 			</div>
+// 		</Modal>
+// 	);
+// };
+
+// export default PrintInvoice;

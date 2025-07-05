@@ -6,6 +6,8 @@ import PrintInvoice from "../components/invoices/PrintInvoice";
 const InvoicePage = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [invoiceItems, setInvoiceItems] = useState([]);
+	const [customer, setCustomer] = useState({});
+	console.log(customer);
 
 	useEffect(() => {
 		const getBills = async () => {
@@ -21,7 +23,7 @@ const InvoicePage = () => {
 		};
 		getBills();
 	}, []);
-	console.log(invoiceItems);
+	// console.log(invoiceItems);
 
 	const columns = [
 		{
@@ -59,12 +61,15 @@ const InvoicePage = () => {
 			title: "Actions",
 			dataIndex: "actions",
 			key: "actions",
-			render: () => {
+			render: (_, record) => {
 				return (
 					<Button
 						type="link"
 						className="pl-0"
-						onClick={() => setIsModalOpen(true)}
+						onClick={() => {
+							setIsModalOpen(true);
+							setCustomer(record);
+						}}
 					>
 						Print
 					</Button>
@@ -89,6 +94,7 @@ const InvoicePage = () => {
 				<PrintInvoice
 					isModalOpen={isModalOpen}
 					setIsModalOpen={setIsModalOpen}
+					customer={customer}
 				/>
 			</div>
 		</>
