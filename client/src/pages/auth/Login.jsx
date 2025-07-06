@@ -17,8 +17,18 @@ const Login = () => {
 					"Content-Type": "application/json; charset=UTF-8",
 				},
 			});
+
+			const user = await res.json();
+			// console.log(user);
+
 			if (res.status === 200) {
-				// console.log(res);
+				localStorage.setItem(
+					"posUser",
+					JSON.stringify({
+						username: user.username,
+						email: user.email,
+					})
+				);
 				messageApi.success("Login successful");
 				navigate("/");
 			} else if (res.status === 404) {
@@ -29,6 +39,7 @@ const Login = () => {
 			setLoading(false);
 		} catch (error) {
 			messageApi.error("Login failed");
+			setLoading(false);
 		}
 	};
 
