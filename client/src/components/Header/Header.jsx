@@ -36,7 +36,7 @@ const Header = () => {
 				</div>
 				<div className="menu-links">
 					<MenuItem
-						to="/home"
+						to="/"
 						icon={<HomeOutlined className="md:text-2xl text-xl" />}
 						label="Home"
 					/>

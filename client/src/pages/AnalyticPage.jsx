@@ -1,43 +1,77 @@
+import { useEffect, useState } from "react";
 import AnalyticCard from "../components/analytics/AnalyticCard";
 import Header from "../components/Header/Header";
 import { Area, Pie } from "@ant-design/plots";
 
 const AnalyticPage = () => {
+	const [data, setData] = useState([]);
+	const [products, setProducts] = useState([]);
+
+	useEffect(() => {
+		asyncFetch();
+	}, []);
+
+	const asyncFetch = () => {
+		fetch("http://localhost:5000/api/invoices/get-all")
+			.then((response) => response.json())
+			.then((json) => setData(json))
+			.catch((error) => console.log(error));
+	};
+	// console.log(data);
+
+	const totalAmount = () => {
+		const amount = data.reduce(
+			(total, item) => item.totalAmount + total,
+			0
+		);
+		return `${amount.toFixed(2)}₺`;
+	};
+
 	const config = {
-		data: {
-			type: "fetch",
-			value: "https://assets.antv.antgroup.com/g2/aapl.json", // JSON veri URL'si
+		data,
+		xField: "customerName",
+		yField: "subTotal",
+		xAxis: {
+			range: [0, 1],
 		},
-		xField: (d) => new Date(d.date),
-		yField: "close",
-		smooth: true,
-		tooltip: { showMarkers: false },
 	};
+
 	const config2 = {
-		data: [
-			{ type: "分类一", value: 27 },
-			{ type: "分类二", value: 25 },
-			{ type: "分类三", value: 18 },
-			{ type: "分类四", value: 15 },
-			{ type: "分类五", value: 10 },
-			{ type: "其他", value: 5 },
-		],
-		angleField: "value",
-		colorField: "type",
+		appendPadding: 10,
+		data,
+		angleField: "subTotal",
+		colorField: "customerName",
+		radius: 1,
+		innerRadius: 0.6,
 		label: {
-			text: "value",
+			offset: "-50%",
+			content: "value",
 			style: {
-				fontWeight: "bold",
+				textAlign: "center",
+				fontSize: 14,
 			},
 		},
-		legend: {
-			color: {
-				title: false,
-				position: "right",
-				rowPadding: 5,
+		interactions: [
+			{
+				type: "element-selected",
+			},
+			{
+				type: "element-active",
+			},
+		],
+		statistic: {
+			title: false,
+			content: {
+				style: {
+					whiteSpace: "pre-wrap",
+					overflow: "hidden",
+					textOverflow: "ellipsis",
+				},
+				content: "Total Revenue",
 			},
 		},
 	};
+
 	return (
 		<>
 			<Header />
@@ -55,22 +89,22 @@ const AnalyticPage = () => {
 					<div className="analytic-cards grid gap-4 md:grid-cols-2 xl:grid-cols-4 md:gap-10 my-10">
 						<AnalyticCard
 							title={"Total Customers"}
-							amount={125}
+							amount={data?.length}
 							img={"images/user.png"}
 						/>
 						<AnalyticCard
 							title={"Total Revenue"}
-							amount={"125.00 €"}
+							amount={totalAmount()}
 							img={"images/money.png"}
 						/>
 						<AnalyticCard
 							title={"Total Sales"}
-							amount={125}
+							amount={data?.length}
 							img={"images/sale.png"}
 						/>
 						<AnalyticCard
 							title={"Total Products"}
-							amount={12500}
+							amount={products?.length}
 							img={"images/product.png"}
 						/>
 					</div>

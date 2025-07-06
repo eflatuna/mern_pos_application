@@ -12,7 +12,7 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="/home" element={<HomePage />} />
+				<Route path="/" element={<HomePage />} />
 				<Route path="/cart" element={<CartPage />} />
 				<Route path="/invoices" element={<InvoicePage />} />
 				<Route path="/customers" element={<CustomerPage />} />
