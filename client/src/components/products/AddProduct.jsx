@@ -18,7 +18,7 @@ const AddProduct = ({
 					"Content-Type": "application/json; charset=UTF-8",
 				},
 			});
-			messageApi.success("Category has been created");
+			messageApi.success("Product has been created");
 			form.resetFields();
 			setIsAddModalOpen(false);
 			setProducts([

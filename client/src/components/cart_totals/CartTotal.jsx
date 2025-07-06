@@ -110,7 +110,7 @@ const CartTotal = () => {
 						<div className="flex justify-between p-2">
 							<b>Subtotal</b>
 							<span>
-								{cart.total > 0 ? cart.total.toFixed(2) : 0}
+								{cart.total > 0 ? cart.total.toFixed(2) : 0}€
 							</span>
 						</div>
 						<div className="flex justify-between p-2">
@@ -136,7 +136,7 @@ const CartTotal = () => {
 											(cart.total * cart.tax) / 100
 									  ).toFixed(2)
 									: 0}
-								₺
+								€
 							</span>
 						</div>
 					</div>

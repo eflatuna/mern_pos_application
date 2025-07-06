@@ -27,7 +27,7 @@ const ProductItem = ({ item }) => {
 				</div>
 				<div className="product-info flex flex-col p-3">
 					<span className="font-bold">{item.title}</span>
-					<span>{item.price}</span>
+					<span>{item.price}€</span>
 				</div>
 			</div>
 		</>
