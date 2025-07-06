@@ -21,12 +21,12 @@ const Login = () => {
 				// console.log(res);
 				messageApi.success("Login successful");
 				navigate("/");
-				setLoading(false);
 			} else if (res.status === 404) {
 				messageApi.error("User not found");
 			} else if (res.status === 403) {
 				messageApi.error("Password is incorrect");
 			}
+			setLoading(false);
 		} catch (error) {
 			messageApi.error("Login failed");
 		}
@@ -110,6 +110,7 @@ const Login = () => {
 									htmlType="submit"
 									className="w-full"
 									size="large"
+									loading={loading}
 								>
 									Login
 								</Button>
