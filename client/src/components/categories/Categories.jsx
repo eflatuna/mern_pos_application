@@ -1,12 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { EditOutlined, PlusOutlined } from "@ant-design/icons";
 import AddCategory from "./AddCategory";
 import EditCategory from "./EditCategory";
 import "./style.css";
 
-const Categories = ({ categories, setCategories }) => {
+const Categories = ({ categories, setCategories, setFiltered, products }) => {
 	const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
+	useEffect(() => {
+		if (categories.length) {
+			setFiltered(products);
+		}
+	});
 
 	return (
 		<ul className="flex gap-4 md:flex-col text-center text-lg ">
