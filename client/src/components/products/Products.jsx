@@ -12,7 +12,7 @@ const Products = ({ categories, filtered, products, setProducts, search }) => {
 		<div className="products-wrapper grid grid-cols-card gap-4 ">
 			{filtered
 				.filter((product) =>
-					product.title.toLowerCase().includes(search)
+					product.title.toLowerCase().startsWith(search)
 				)
 				.map((item) => (
 					<ProductItem key={item._id} item={item} />
