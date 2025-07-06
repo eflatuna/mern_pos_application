@@ -1,7 +1,13 @@
 import { Button, Modal } from "antd";
+import { useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 
 const PrintInvoice = ({ setIsModalOpen, isModalOpen, customer }) => {
 	const closeModal = () => setIsModalOpen(false);
+	const componentRef = useRef();
+	const handlePrint = useReactToPrint({
+		contentRef: componentRef,
+	});
 
 	return (
 		<Modal
@@ -11,7 +17,7 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen, customer }) => {
 			onCancel={closeModal}
 			width={800}
 		>
-			<section className="py-20 bg-black">
+			<section className="py-20 bg-black" ref={componentRef}>
 				<div className="max-w-4xl bg-white px-6">
 					<article className="overflow-hidden">
 						<div className="logo my-6">
@@ -24,7 +30,7 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen, customer }) => {
 										<p className="font-bold text-slate-700">
 											Invoice Details
 										</p>
-										<p> Unwrapped </p>
+										<p> {customer?.customerName}</p>
 										<p>Fake Street 123</p>
 										<p>San Javier</p>
 										<p>CA 12345</p>
@@ -282,7 +288,7 @@ const PrintInvoice = ({ setIsModalOpen, isModalOpen, customer }) => {
 				</div>
 			</section>
 			<div className="flex justify-end mt-4">
-				<Button type="primary" size="large">
+				<Button type="primary" size="large" onClick={handlePrint}>
 					Print
 				</Button>
 			</div>
