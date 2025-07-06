@@ -23,7 +23,9 @@ const Login = () => {
 				navigate("/");
 				setLoading(false);
 			} else if (res.status === 404) {
-				messageApi.error("Invalid username or password");
+				messageApi.error("User not found");
+			} else if (res.status === 403) {
+				messageApi.error("Password is incorrect");
 			}
 		} catch (error) {
 			messageApi.error("Login failed");
