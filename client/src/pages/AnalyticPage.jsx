@@ -125,10 +125,10 @@ const AnalyticPage = () => {
 						/>
 					</div>
 					<div className="flex justify-between gap-10 lg:flex-row flex-col items-center">
-						<div className="lg:w-1/2 lg:h-full h-72">
+						<div className="lg:w-1/2 lg:h-72 h-72">
 							<Area {...config} />
 						</div>
-						<div className="lg:w-1/2 lg:h-full h-72">
+						<div className="lg:w-1/2 lg:h-72 h-72">
 							<Pie {...config2} />
 						</div>
 					</div>

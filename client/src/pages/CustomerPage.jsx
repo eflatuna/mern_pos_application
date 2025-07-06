@@ -173,6 +173,7 @@ const CustomerPage = () => {
 					bordered
 					pagination={false}
 					scroll={{ x: 1000, y: 300 }}
+					rowKey="_id"
 				/>
 			</div>
 		</>

@@ -210,6 +210,7 @@ const InvoicePage = () => {
 					bordered
 					pagination={false}
 					scroll={{ x: 1000, y: 300 }}
+					rowKey="_id"
 				/>
 				<PrintInvoice
 					isModalOpen={isModalOpen}

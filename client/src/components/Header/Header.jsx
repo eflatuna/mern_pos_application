@@ -9,14 +9,18 @@ import {
 	UserOutlined,
 } from "@ant-design/icons";
 import MenuItem from "./MenuItem.jsx";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./index.css";
 import { useSelector } from "react-redux";
 
 const Header = ({ setSearch }) => {
 	const cart = useSelector((state) => state.cart);
+	const { pathname } = useLocation();
 	const navigate = useNavigate();
 	const [messageApi, contextHolder] = message.useMessage();
+
+	console.log(pathname);
+
 	const logOut = () => {
 		if (window.confirm("Are you sure you want to log out?")) {
 			localStorage.removeItem("posUser");
@@ -39,7 +43,12 @@ const Header = ({ setSearch }) => {
 							</h2>
 						</Link>
 					</div>
-					<div className="header-search flex-1 flex justify-center">
+					<div
+						className="header-search flex-1 flex justify-center"
+						onClick={() => {
+							pathname !== "/" && navigate("/");
+						}}
+					>
 						<Input
 							size="large"
 							placeholder="Search products..."
