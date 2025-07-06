@@ -6,11 +6,27 @@ import { Area, Pie } from "@ant-design/plots";
 const AnalyticPage = () => {
 	const [data, setData] = useState([]);
 	const [products, setProducts] = useState([]);
+	const user = JSON.parse(localStorage.getItem("posUser"));
+	// console.log(user);
 
 	useEffect(() => {
 		asyncFetch();
 	}, []);
 
+	useEffect(() => {
+		const getProducts = async () => {
+			try {
+				const res = await fetch(
+					"http://localhost:5000/api/products/get-all"
+				);
+				const data = await res.json();
+				setProducts(data);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		getProducts();
+	}, []);
 	const asyncFetch = () => {
 		fetch("http://localhost:5000/api/invoices/get-all")
 			.then((response) => response.json())
@@ -83,7 +99,7 @@ const AnalyticPage = () => {
 					<h2 className="text-lg">
 						Welcome{" "}
 						<span className="text-light-green font-bold text-xl">
-							Admin
+							{user.username}
 						</span>
 					</h2>
 					<div className="analytic-cards grid gap-4 md:grid-cols-2 xl:grid-cols-4 md:gap-10 my-10">
