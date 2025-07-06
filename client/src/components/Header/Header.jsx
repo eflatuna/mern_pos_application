@@ -13,7 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./index.css";
 import { useSelector } from "react-redux";
 
-const Header = () => {
+const Header = ({ setSearch }) => {
 	const cart = useSelector((state) => state.cart);
 	const navigate = useNavigate();
 	const [messageApi, contextHolder] = message.useMessage();
@@ -45,6 +45,9 @@ const Header = () => {
 							placeholder="Search products..."
 							prefix={<SearchOutlined />}
 							className="rounded-full w-full min-w-[150px] md:max-w-[800px]"
+							onChange={(e) =>
+								setSearch(e.target.value.toLocaleLowerCase())
+							}
 						/>
 					</div>
 					<div className="menu-links">

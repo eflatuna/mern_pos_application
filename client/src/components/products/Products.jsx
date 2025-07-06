@@ -4,15 +4,19 @@ import { EditOutlined, PlusOutlined } from "@ant-design/icons";
 import AddProduct from "./AddProduct";
 import { useNavigate } from "react-router-dom";
 
-const Products = ({ categories, filtered, products, setProducts }) => {
+const Products = ({ categories, filtered, products, setProducts, search }) => {
 	const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 	const navigate = useNavigate("/products");
 
 	return (
 		<div className="products-wrapper grid grid-cols-card gap-4 ">
-			{filtered.map((item) => (
-				<ProductItem key={item._id} item={item} />
-			))}
+			{filtered
+				.filter((product) =>
+					product.title.toLowerCase().includes(search)
+				)
+				.map((item) => (
+					<ProductItem key={item._id} item={item} />
+				))}
 			<div className="product-item border hover:shadow-lg cursor-pointer transition-all select-none bg-purple-800 flex items-center justify-center hover:opacity-90 min-h-[180px]">
 				<PlusOutlined
 					className="text-white md:text-2xl"
