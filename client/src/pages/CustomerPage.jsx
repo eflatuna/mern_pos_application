@@ -1,28 +1,28 @@
-import { Button, Table, Input, Space } from "antd";
+import { Button, Table, Input, Space, Spin } from "antd";
 import Header from "../components/Header/Header";
 import { useEffect, useRef, useState } from "react";
 import Highlighter from "react-highlight-words";
 import { SearchOutlined } from "@ant-design/icons";
 
 const CustomerPage = () => {
-	const [billItems, setBillItems] = useState([]);
+	const [invoiceItems, setInvoiceItems] = useState();
 	const [searchText, setSearchText] = useState("");
 	const [searchedColumn, setSearchedColumn] = useState("");
 	const searchInput = useRef();
 
 	useEffect(() => {
-		const getBills = async () => {
+		const getInvoices = async () => {
 			try {
 				const res = await fetch(
 					"http://localhost:5000/api/invoices/get-all"
 				);
 				const data = await res.json();
-				setBillItems(data);
+				setInvoiceItems(data);
 			} catch (error) {
 				console.log(error);
 			}
 		};
-		getBills();
+		getInvoices();
 	}, []);
 	// console.log(invoiceItems);
 
@@ -163,19 +163,23 @@ const CustomerPage = () => {
 	return (
 		<>
 			<Header />
-			<div className="px-6 ">
-				<h1 className="text-4xl font-bold text-center mb-4">
-					Customers
-				</h1>
-				<Table
-					dataSource={billItems}
-					columns={columns}
-					bordered
-					pagination={false}
-					scroll={{ x: 1000, y: 300 }}
-					rowKey="_id"
-				/>
-			</div>
+			{invoiceItems ? (
+				<div className="px-6 ">
+					<h1 className="text-4xl font-bold text-center mb-4">
+						Customers
+					</h1>
+					<Table
+						dataSource={invoiceItems}
+						columns={columns}
+						bordered
+						pagination={false}
+						scroll={{ x: 1000, y: 300 }}
+						rowKey="_id"
+					/>
+				</div>
+			) : (
+				<Spin className="absolute top-1/2 w-screen h-screen flex justify-center z-50" />
+			)}
 		</>
 	);
 };
