@@ -109,7 +109,6 @@ const Header = ({ setSearch }) => {
 									<LogoutOutlined className="md:text-2xl text-xl" />
 								}
 								label="Logout"
-								isActive={pathname === "/login"}
 							/>
 						</div>
 					</div>
