@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
 const logger = require("morgan");
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 //routes
 const categoryRoute = require("./routes/categories.js");
