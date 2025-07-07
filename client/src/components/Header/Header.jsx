@@ -66,6 +66,7 @@ const Header = ({ setSearch }) => {
 								<HomeOutlined className="md:text-2xl text-xl" />
 							}
 							label="Home"
+							isActive={pathname === "/"}
 						/>
 						<MenuItem
 							to="/cart"
@@ -76,6 +77,7 @@ const Header = ({ setSearch }) => {
 							count={5}
 							showOnMobile={false}
 							showOnDesktop={true}
+							isActive={pathname === "/cart"}
 						/>
 						<MenuItem
 							to="/invoices"
@@ -83,6 +85,7 @@ const Header = ({ setSearch }) => {
 								<CopyOutlined className="md:text-2xl text-xl" />
 							}
 							label="Invoices"
+							isActive={pathname === "/invoices"}
 						/>
 						<MenuItem
 							to="/customers"
@@ -90,6 +93,7 @@ const Header = ({ setSearch }) => {
 								<UserOutlined className="md:text-2xl text-xl" />
 							}
 							label="Customers"
+							isActive={pathname === "/customers"}
 						/>
 						<MenuItem
 							to="/analytics"
@@ -97,6 +101,7 @@ const Header = ({ setSearch }) => {
 								<BarChartOutlined className="md:text-2xl text-xl" />
 							}
 							label="Analytics"
+							isActive={pathname === "/analytics"}
 						/>
 						<div onClick={logOut}>
 							<MenuItem
@@ -104,16 +109,18 @@ const Header = ({ setSearch }) => {
 									<LogoutOutlined className="md:text-2xl text-xl" />
 								}
 								label="Logout"
+								isActive={pathname === "/login"}
 							/>
 						</div>
 					</div>
 					<MenuItem
 						to="/cart"
-						icon={<ShoppingCartOutlined className=" text-xl" />}
+						icon={<ShoppingCartOutlined className="text-xl" />}
 						label="Cart"
 						count={5}
 						showOnMobile={true}
 						showOnDesktop={false}
+						isActive={pathname === "/cart"}
 					/>
 				</header>
 			</div>
