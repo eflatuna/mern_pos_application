@@ -15,7 +15,7 @@ const HomePage = () => {
 		const getCategories = async () => {
 			try {
 				const res = await fetch(
-					"http://localhost:5000/api/categories/get-all"
+					process.env.REACT_APP_SERVER_URL + "/api/categories/get-all"
 				);
 				const data = await res.json();
 				data &&
@@ -25,11 +25,15 @@ const HomePage = () => {
 						})
 					);
 			} catch (error) {
-				console.log(error);
+				console.error("Kategori çekme hatası:", error);
 			}
 		};
 		getCategories();
 	}, []);
+	console.log(
+		"API URL:",
+		process.env.REACT_APP_SERVER_URL + "/api/categories/get-all"
+	);
 
 	useEffect(() => {
 		const getProducts = async () => {
