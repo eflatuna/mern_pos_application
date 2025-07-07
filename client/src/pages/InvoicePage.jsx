@@ -1,4 +1,4 @@
-import { Button, Table, Input, Space } from "antd";
+import { Button, Table, Input, Space, Spin } from "antd";
 import Header from "../components/Header/Header";
 import { useEffect, useState, useRef } from "react";
 import PrintInvoice from "../components/invoices/PrintInvoice";
@@ -7,7 +7,7 @@ import { SearchOutlined } from "@ant-design/icons";
 
 const InvoicePage = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [invoiceItems, setInvoiceItems] = useState([]);
+	const [invoiceItems, setInvoiceItems] = useState();
 	const [customer, setCustomer] = useState({});
 	const [searchText, setSearchText] = useState("");
 	const [searchedColumn, setSearchedColumn] = useState("");
@@ -200,24 +200,31 @@ const InvoicePage = () => {
 	return (
 		<>
 			<Header />
-			<div className="px-6 ">
-				<h1 className="text-4xl font-bold text-center mb-4">
-					Invoices
-				</h1>
-				<Table
-					dataSource={invoiceItems}
-					columns={columns}
-					bordered
-					pagination={false}
-					scroll={{ x: 1000, y: 300 }}
-					rowKey="_id"
+			{invoiceItems ? (
+				<div className="px-6 ">
+					<h1 className="text-4xl font-bold text-center mb-4">
+						Invoices
+					</h1>
+					<Table
+						dataSource={invoiceItems}
+						columns={columns}
+						bordered
+						pagination={false}
+						scroll={{ x: 1000, y: 300 }}
+						rowKey="_id"
+					/>
+				</div>
+			) : (
+				<Spin
+					size="large"
+					className="absolute top-1/2 w-screen h-screen flex justify-center z-50"
 				/>
-				<PrintInvoice
-					isModalOpen={isModalOpen}
-					setIsModalOpen={setIsModalOpen}
-					customer={customer}
-				/>
-			</div>
+			)}
+			<PrintInvoice
+				isModalOpen={isModalOpen}
+				setIsModalOpen={setIsModalOpen}
+				customer={customer}
+			/>
 		</>
 	);
 };

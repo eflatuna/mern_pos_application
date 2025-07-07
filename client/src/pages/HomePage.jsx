@@ -75,7 +75,7 @@ const HomePage = () => {
 			) : (
 				<Spin
 					size="large"
-					className="absolute w-screen h-screen flex items-center justify-center z-50"
+					className="absolute top-1/2 w-screen h-screen flex justify-center z-50"
 				/>
 			)}
 		</>
