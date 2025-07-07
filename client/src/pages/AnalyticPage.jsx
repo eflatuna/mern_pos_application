@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import AnalyticCard from "../components/analytics/AnalyticCard";
 import Header from "../components/Header/Header";
 import { Area, Pie } from "@ant-design/plots";
+import { Spin } from "antd";
 
 const AnalyticPage = () => {
-	const [data, setData] = useState([]);
+	const [data, setData] = useState();
 	const [products, setProducts] = useState([]);
 	const user = JSON.parse(localStorage.getItem("posUser"));
 	// console.log(user);
@@ -91,49 +92,53 @@ const AnalyticPage = () => {
 	return (
 		<>
 			<Header />
-			<div className="px-6 pb-20 md:pb-0">
-				<h1 className="text-4xl font-bold text-center mb-4">
-					Analytics
-				</h1>
-				<div className="analytic-section">
-					<h2 className="text-lg">
-						Welcome{" "}
-						<span className="text-light-green font-bold text-xl">
-							{user.username}
-						</span>
-					</h2>
-					<div className="analytic-cards grid gap-4 md:grid-cols-2 xl:grid-cols-4 md:gap-10 my-10">
-						<AnalyticCard
-							title={"Total Customers"}
-							amount={data?.length}
-							img={"images/user.png"}
-						/>
-						<AnalyticCard
-							title={"Total Revenue"}
-							amount={totalAmount()}
-							img={"images/money.png"}
-						/>
-						<AnalyticCard
-							title={"Total Sales"}
-							amount={data?.length}
-							img={"images/sale.png"}
-						/>
-						<AnalyticCard
-							title={"Total Products"}
-							amount={products?.length}
-							img={"images/product.png"}
-						/>
-					</div>
-					<div className="flex justify-between gap-10 lg:flex-row flex-col items-center">
-						<div className="lg:w-1/2 lg:h-80 h-72">
-							<Area {...config} />
+			{data ? (
+				<div className="px-6 pb-20 md:pb-0">
+					<h1 className="text-4xl font-bold text-center mb-4">
+						Analytics
+					</h1>
+					<div className="analytic-section">
+						<h2 className="text-lg">
+							Welcome{" "}
+							<span className="text-light-green font-bold text-xl">
+								{user.username}
+							</span>
+						</h2>
+						<div className="analytic-cards grid gap-4 md:grid-cols-2 xl:grid-cols-4 md:gap-10 my-10">
+							<AnalyticCard
+								title={"Total Customers"}
+								amount={data?.length}
+								img={"images/user.png"}
+							/>
+							<AnalyticCard
+								title={"Total Revenue"}
+								amount={totalAmount()}
+								img={"images/money.png"}
+							/>
+							<AnalyticCard
+								title={"Total Sales"}
+								amount={data?.length}
+								img={"images/sale.png"}
+							/>
+							<AnalyticCard
+								title={"Total Products"}
+								amount={products?.length}
+								img={"images/product.png"}
+							/>
 						</div>
-						<div className="lg:w-1/2 lg:h-80 h-72">
-							<Pie {...config2} />
+						<div className="flex justify-between gap-10 lg:flex-row flex-col items-center">
+							<div className="lg:w-1/2 lg:h-80 h-72">
+								<Area {...config} />
+							</div>
+							<div className="lg:w-1/2 lg:h-80 h-72">
+								<Pie {...config2} />
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			) : (
+				<Spin className="absolute top-1/2 w-screen h-screen flex justify-center z-50" />
+			)}
 		</>
 	);
 };
