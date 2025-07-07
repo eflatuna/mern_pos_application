@@ -13,6 +13,8 @@ import AnalyticPage from "./pages/AnalyticPage";
 import ProductPage from "./pages/ProductPage";
 import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 // ProtectedRoute artık children yerine Outlet kullanıyor
 const PrivateRoute = () => {
@@ -21,6 +23,12 @@ const PrivateRoute = () => {
 };
 
 function App() {
+	const cart = useSelector((state) => state.cart);
+
+	useEffect(() => {
+		localStorage.setItem("cart", JSON.stringify(cart));
+	}, [cart]);
+
 	return (
 		<BrowserRouter>
 			<Routes>

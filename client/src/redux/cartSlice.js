@@ -1,12 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+let saved = {};
+try {
+	saved = JSON.parse(localStorage.getItem("cart")) || {};
+} catch {
+	saved = {};
+}
+
+const initialState = {
+	cartItems: Array.isArray(saved.cartItems) ? saved.cartItems : [],
+	total: typeof saved.total === "number" ? saved.total : 0,
+	tax: 8,
+};
 const cartSlice = createSlice({
 	name: "cart",
-	initialState: {
-		cartItems: [],
-		total: 0,
-		tax: 8,
-	},
+	initialState,
 	reducers: {
 		addProduct: (state, action) => {
 			const findCartItem = state.cartItems.find(
