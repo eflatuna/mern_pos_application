@@ -199,12 +199,10 @@ const InvoicePage = () => {
 
 	return (
 		<>
-			<Header />
+			<Header />{" "}
+			<h1 className="text-4xl font-bold text-center mb-4">Invoices</h1>
 			{invoiceItems ? (
 				<div className="px-6 ">
-					<h1 className="text-4xl font-bold text-center mb-4">
-						Invoices
-					</h1>
 					<Table
 						dataSource={invoiceItems}
 						columns={columns}

@@ -92,11 +92,9 @@ const AnalyticPage = () => {
 	return (
 		<>
 			<Header />
+			<h1 className="text-4xl font-bold text-center mb-4">Analytics</h1>
 			{data ? (
 				<div className="px-6 pb-20 md:pb-0">
-					<h1 className="text-4xl font-bold text-center mb-4">
-						Analytics
-					</h1>
 					<div className="analytic-section">
 						<h2 className="text-lg">
 							Welcome{" "}
