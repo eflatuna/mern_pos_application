@@ -9,13 +9,17 @@ const AddCategory = ({
 	const [messageApi, contextHolder] = message.useMessage();
 	const onFinish = (values) => {
 		try {
-			fetch("http://localhost:5000/api/categories/add-category", {
-				method: "POST",
-				body: JSON.stringify(values),
-				headers: {
-					"Content-Type": "application/json; charset=UTF-8",
-				},
-			});
+			fetch(
+				process.env.REACT_APP_SERVER_URL +
+					"/api/categories/add-category",
+				{
+					method: "POST",
+					body: JSON.stringify(values),
+					headers: {
+						"Content-Type": "application/json; charset=UTF-8",
+					},
+				}
+			);
 			messageApi.success("Category has been created");
 			form.resetFields();
 			setCategories([

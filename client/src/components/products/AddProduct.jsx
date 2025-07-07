@@ -11,13 +11,16 @@ const AddProduct = ({
 	const onFinish = async (values) => {
 		// console.log(values);
 		try {
-			await fetch("http://localhost:5000/api/products/add-product", {
-				method: "POST",
-				body: JSON.stringify(values),
-				headers: {
-					"Content-Type": "application/json; charset=UTF-8",
-				},
-			});
+			await fetch(
+				process.env.REACT_APP_SERVER_URL + "/api/products/add-product",
+				{
+					method: "POST",
+					body: JSON.stringify(values),
+					headers: {
+						"Content-Type": "application/json; charset=UTF-8",
+					},
+				}
+			);
 			messageApi.success("Product has been created");
 			form.resetFields();
 			setIsAddModalOpen(false);

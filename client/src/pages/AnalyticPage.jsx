@@ -18,7 +18,7 @@ const AnalyticPage = () => {
 		const getProducts = async () => {
 			try {
 				const res = await fetch(
-					"http://localhost:5000/api/products/get-all"
+					process.env.REACT_APP_SERVER_URL + "/api/products/get-all"
 				);
 				const data = await res.json();
 				setProducts(data);
@@ -29,7 +29,7 @@ const AnalyticPage = () => {
 		getProducts();
 	}, []);
 	const asyncFetch = () => {
-		fetch("http://localhost:5000/api/invoices/get-all")
+		fetch(process.env.REACT_APP_SERVER_URL + "/api/invoices/get-all")
 			.then((response) => response.json())
 			.then((json) => setData(json))
 			.catch((error) => console.log(error));

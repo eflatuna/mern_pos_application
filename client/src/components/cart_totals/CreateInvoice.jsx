@@ -22,7 +22,7 @@ const CreateInvoice = ({ setIsModalOpen, isModalOpen }) => {
 		console.log("➡️ Sending invoice payload:", payload);
 		try {
 			const res = await fetch(
-				"http://localhost:5000/api/invoices/add-invoice",
+				process.env.REACT_APP_SERVER_URL + "/api/invoices/add-invoice",
 				{
 					method: "POST",
 					body: JSON.stringify(payload),

@@ -19,7 +19,7 @@ const EditProduct = () => {
 		const getProducts = async () => {
 			try {
 				const res = await fetch(
-					"http://localhost:5000/api/products/get-all"
+					process.env.REACT_APP_SERVER_URL + "/api/products/get-all"
 				);
 				const data = await res.json();
 				setProducts(data);
@@ -34,7 +34,7 @@ const EditProduct = () => {
 		const getCategories = async () => {
 			try {
 				const res = await fetch(
-					"http://localhost:5000/api/categories/get-all"
+					process.env.REACT_APP_SERVER_URL + "/api/categories/get-all"
 				);
 				const data = await res.json();
 				data &&
@@ -52,16 +52,20 @@ const EditProduct = () => {
 
 	const onFinish = (values) => {
 		try {
-			fetch("http://localhost:5000/api/products/update-product", {
-				method: "PUT",
-				body: JSON.stringify({
-					...values,
-					productId: editingItem._id,
-				}),
-				headers: {
-					"Content-Type": "application/json; charset=UTF-8",
-				},
-			});
+			fetch(
+				process.env.REACT_APP_SERVER_URL +
+					"/api/products/update-product",
+				{
+					method: "PUT",
+					body: JSON.stringify({
+						...values,
+						productId: editingItem._id,
+					}),
+					headers: {
+						"Content-Type": "application/json; charset=UTF-8",
+					},
+				}
+			);
 			messageApi.success("Product has been updated");
 			setProducts(
 				products.map((item) => {
@@ -80,15 +84,19 @@ const EditProduct = () => {
 	const deleteCategory = (id) => {
 		if (window.confirm("Are you sure you want to delete this product?")) {
 			try {
-				fetch("http://localhost:5000/api/products/delete-product", {
-					method: "DELETE",
-					body: JSON.stringify({
-						productId: id,
-					}),
-					headers: {
-						"Content-Type": "application/json; charset=UTF-8",
-					},
-				});
+				fetch(
+					process.env.REACT_APP_SERVER_URL +
+						"/api/products/delete-product",
+					{
+						method: "DELETE",
+						body: JSON.stringify({
+							productId: id,
+						}),
+						headers: {
+							"Content-Type": "application/json; charset=UTF-8",
+						},
+					}
+				);
 				messageApi.success("Product has been deleted");
 				setProducts(products.filter((item) => item._id !== id));
 			} catch (error) {
